@@ -136,6 +136,74 @@
 		\end{figure}
 	\end{frame}
 	
+	\begin{frame}{Transmittance model}
+		\begin{minipage}{.4\textwidth}
+			\centering
+			Conventional approach:
+			\begin{equation}
+				\begin{aligned}
+					N_{\text{tot}}^{\text{ref}} &= \eta_{\text{idl}} \, N_{\mathrm{g}} 	+ N_{\text{noise}}^{\text{ref}} \\[0.5em]
+					N_{\text{tot}}^{\text{sam}} &= T \, \eta_{\text{idl}} \, 	N_{\mathrm{g}} + N_{\text{noise}}^{\text{sam}}
+				\end{aligned}
+				\label{eq:SingleSam}
+				\nonumber
+			\end{equation}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.4\textwidth}
+			\centering
+			Coincidence approach:
+			\begin{equation}
+				\begin{aligned}
+					N_{\text{cc}}^{\text{pure,sam}} &= T \,\eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}}, \\[0.5em]
+					N_{\text{cc}}^{\text{pure,ref}} &= \eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}}
+				\end{aligned}
+				\label{eq:pureCoinc}
+				\nonumber
+			\end{equation}
+		\end{minipage}
+	\end{frame}
+	\begin{frame}
+			\begin{minipage}{.6\textwidth}
+				\centering
+				\includegraphics[width=.7\textwidth]{Images/ConventionalSetup.pdf}
+			\end{minipage}
+	\end{frame}
+	\begin{frame}{Transmittance model}
+			Conventional approach:
+			\begin{equation}
+				\operatorname{Var}(T) 
+				= \left( \frac{1}{\eta_{\text{idl}}\,N_g} \right)^{2}
+				\Bigg[
+				\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right) 
+				+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right) 
+				+ T^{2} \Big[ 
+				\operatorname{Var}\!\left(N_{\text{tot}}^{\text{ref}}\right) 
+				+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{ref}}\right) 
+				\Big]
+				\Bigg]
+				\label{eq:VarianceTransExpl}
+				\nonumber
+			\end{equation}
+			\vspace{2em}
+			Coincidence approach:
+			\begin{equation}
+				\operatorname{Var}(T) 
+				= \left( \frac{1}{\eta_{\text{sig}}\,\eta_{\text{idl}}\,N_g} \right)^{2}
+				\Bigg[
+				\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right) 
+				+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) 
+				+ T^{2} \Big[ 
+				\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{ref}}\right) 
+				+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{ref}}\right) 
+				\Big]
+				\Bigg]
+				\label{eq:VarianceTransExplCoinc}
+				\nonumber
+			\end{equation}
+	\end{frame}
+	
+	
 	\section{Experiment}
 	\begin{frame}{Experimental setup}
 			\begin{center}

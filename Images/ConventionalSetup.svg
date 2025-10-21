@@ -8,7 +8,7 @@
    height="256"
    viewBox="0 0 434.66666 256"
    sodipodi:docname="ConventionalSetup.svg"
-   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
    inkscape:export-filename="ConventionalSetup.pdf"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -750,15 +750,16 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
-     inkscape:zoom="2.2511407"
-     inkscape:cx="206.78405"
-     inkscape:cy="136.59741"
+     inkscape:zoom="1.5917969"
+     inkscape:cx="157.36933"
+     inkscape:cy="136.00982"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-height="1137"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g1">
+     inkscape:current-layer="g1"
+     showgrid="false">
     <inkscape:page
        x="0"
        y="0"
@@ -880,13 +881,16 @@
     <text
        id="text134"
        xml:space="preserve"
-       transform="matrix(1.3333333,0,0,1.3332675,114.51204,253.60803)"><tspan
+       transform="scale(1.0000247,0.99997531)"
+       x="151.73854"
+       y="252.88673"
+       style="font-size:15.9996px;stroke-width:1.3333"><tspan
          id="tspan135"
-         style="font-variant:normal;font-weight:normal;font-size:9.02758px;font-family:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         x="0"
-         dx="0 0 0 0 0 0 31.251268"
-         y="0"
-         dy="0 0 0 0 0 0 0.83973157">β-BBO DM</tspan></text>
+         style="font-variant:normal;font-weight:normal;font-size:12.0365px;font-family:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.3333"
+         x="151.73854"
+         dx="0 41.667328"
+         y="252.88673"
+         dy="0 1.1196145"> DM</tspan></text>
     <text
        id="text139"
        xml:space="preserve"
@@ -908,7 +912,7 @@
          id="tspan141"
          style="font-variant:normal;font-weight:normal;font-size:8.69301px;font-family:Arial;writing-mode:lr-tb;fill:#00853e;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.3333"
          x="236.82063"
-         y="223.30479">s</tspan></text>
+         y="223.30479">sig</tspan></text>
     <text
        id="text141"
        xml:space="preserve"
@@ -924,34 +928,34 @@
        id="text142"
        xml:space="preserve"
        transform="scale(1.0000247,0.99997531)"
-       x="188.19519"
+       x="182.19533"
        y="187.21651"
        style="font-size:15.9996px;stroke-width:1.3333"><tspan
          id="tspan143"
          style="font-variant:normal;font-weight:normal;font-size:13.3738px;font-family:Arial;writing-mode:lr-tb;fill:#e00043;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.3333"
-         x="188.19519"
+         x="182.19533"
          y="187.21651">λ</tspan></text>
     <text
        id="text143"
        xml:space="preserve"
        transform="scale(1.0000247,0.99997531)"
-       x="194.88213"
+       x="188.88226"
        y="189.89128"
        style="font-size:15.9996px;stroke-width:1.3333"><tspan
          id="tspan144"
          style="font-variant:normal;font-weight:normal;font-size:8.69301px;font-family:Arial;writing-mode:lr-tb;fill:#e00043;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.3333"
-         x="194.88213"
-         y="189.89128">i</tspan></text>
+         x="188.88226"
+         y="189.89128">idl</tspan></text>
     <text
        id="text144"
        xml:space="preserve"
        transform="scale(1.0000247,0.99997531)"
-       x="196.81343"
+       x="190.81357"
        y="187.21651"
        style="font-size:15.9996px;stroke-width:1.3333"><tspan
          id="tspan145"
          style="font-variant:normal;font-weight:normal;font-size:13.3738px;font-family:Arial;writing-mode:lr-tb;fill:#e00043;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.3333"
-         x="196.81343"
+         x="190.81357"
          y="187.21651"> </tspan></text>
     <path
        id="path156"

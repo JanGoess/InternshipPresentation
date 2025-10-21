@@ -7,19 +7,18 @@
    width="434.66666"
    height="256"
    viewBox="0 0 434.66666 256"
-   sodipodi:docname="CoincSetup.svg"
+   sodipodi:docname="CoincSetup_NoSam.svg"
    xml:space="preserve"
    inkscape:version="1.4.2 (ebf0e94, 2025-05-08)"
-   inkscape:export-filename="CoincSetup_Sam.pdf"
+   inkscape:export-filename="CoincSetup_NoSam.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:ns0="&amp;#38;ns_ai;"
-   xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"><defs
+   xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+   xmlns:ns="&amp;#38;#38;ns_ai;"><defs
      id="defs1"><linearGradient
        x1="350.0874"
        y1="43.0298"
@@ -98,7 +97,7 @@
        x2="149.16559"
        y2="90.281837"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0,3.662039,-2.22727,0,374.17768,-407.66245)"
+       gradientTransform="matrix(0,6.5836298,-2.9696933,0,498.90356,-811.67582)"
        spreadMethod="pad"
        id="linearGradient20"><stop
          style="stop-opacity:1;stop-color:#ffffff"
@@ -563,27 +562,7 @@
          id="stop163" /><stop
          style="stop-opacity:1;stop-color:#ff1a00"
          offset="1"
-         id="stop164" /></linearGradient><linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient168"
-       id="linearGradient165"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(6.5973063e-6,0.24369068,-1.2003392,-3.0158104e-5,239.45137,60.550204)"
-       x1="350.0874"
-       y1="43.0298"
-       x2="350.0874"
-       y2="14.6831"
-       spreadMethod="pad" /><linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient20"
-       id="linearGradient169"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0,1.6208883,-2.9696933,0,498.93319,-113.44579)"
-       x1="149.16559"
-       y1="107.48901"
-       x2="149.16559"
-       y2="90.281837"
-       spreadMethod="pad" /></defs><sodipodi:namedview
+         id="stop164" /></linearGradient></defs><sodipodi:namedview
      id="namedview1"
      pagecolor="#505050"
      bordercolor="#eeeeee"
@@ -593,8 +572,8 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:zoom="2.2511407"
-     inkscape:cx="167.69276"
-     inkscape:cy="132.15522"
+     inkscape:cx="165.47167"
+     inkscape:cy="166.80432"
      inkscape:window-width="1920"
      inkscape:window-height="1137"
      inkscape:window-x="-8"
@@ -637,12 +616,8 @@
        style="fill:url(#linearGradient15);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.895427;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        transform="scale(1.3333333,1.0851813)" /><path
        id="path20"
-       d="m 151.781,107.566 h 4.305 v 62.043 h -4.305 z"
-       transform="scale(1.3333333)"
-       style="fill:url(#linearGradient20);stroke:none" /><path
-       id="path20-4"
-       d="m 202.40429,114.60415 h 5.74 v 27.46142 h -5.74 z"
-       style="fill:url(#linearGradient169);stroke:none;stroke-width:0.768216" /><path
+       d="m 202.37466,114.60415 h 5.74 v 111.54118 h -5.74 z"
+       style="fill:url(#linearGradient20);stroke:none;stroke-width:1.54825" /><path
        id="path98"
        d="m 33.992,167.941 h 51.84 v 3.754 h -51.84 z"
        transform="scale(1.3333333)"
@@ -716,16 +691,6 @@
          style="font-variant:normal;font-weight:normal;font-size:11.7904px;font-family:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.30569"
          x="292.34686"
          y="240.30908">SPD</tspan></text><text
-       id="text132-9-8"
-       xml:space="preserve"
-       transform="scale(1.0211675,0.97927127)"
-       x="225.3503"
-       y="153.2643"
-       style="font-size:15.6683px;stroke-width:1.30569"><tspan
-         id="tspan132-5-7"
-         style="font-variant:normal;font-weight:normal;font-size:11.7904px;font-family:Arial;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.30569"
-         x="225.3503"
-         y="153.2643">Sam</tspan></text><text
        id="text133"
        xml:space="preserve"
        transform="matrix(1.3333333,0,0,1.2786296,73.554025,211.93382)"><tspan
@@ -812,17 +777,14 @@
        id="path161"
        d="m 193.36,-0.139 h 4.401 l -0.001,18.046 -4.399,0.002 z"
        style="fill:url(#linearGradient164);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.398515;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       transform="matrix(1.110096,1.11004,-1.3333333,1.333268,0,0)" /><path
-       id="path161-5"
-       d="m 221.83095,142.4084 1.7e-4,6.90901 -34.02703,-0.002 -0.004,-6.90587 z"
-       style="fill:url(#linearGradient165);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.685644;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /><g
+       transform="matrix(1.110096,1.11004,-1.3333333,1.333268,0,0)" /><g
        style="overflow:visible"
        id="g169"
        transform="matrix(0.64398643,0,0,0.62724846,296.64782,121.71227)"><g
          id="Layer_1"
-         ns0:layer="yes"
-         ns0:dimmedPercent="50"
-         ns0:rgbTrio="#4F008000FFFF">
+         ns:layer="yes"
+         ns:dimmedPercent="50"
+         ns:rgbTrio="#4F008000FFFF">
 			<g
    id="g15">
 				
@@ -907,7 +869,7 @@
    style="stop-color:#302B33" />
 				</radialGradient>
 				<circle
-   ns0:knockout="Off"
+   ns:knockout="Off"
    fill="url(#XMLID_2_)"
    stroke="#000000"
    stroke-width="0.75"
@@ -917,7 +879,7 @@
    id="circle14"
    style="fill:url(#XMLID_2_)" /> 
 				<line
-   ns0:knockout="Off"
+   ns:knockout="Off"
    fill="none"
    stroke="#000000"
    stroke-width="1.5"
@@ -927,7 +889,7 @@
    y2="21.634001"
    id="line14" />
 				<line
-   ns0:knockout="Off"
+   ns:knockout="Off"
    fill="none"
    stroke="#000000"
    stroke-width="1.5"

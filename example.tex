@@ -163,44 +163,87 @@
 			\end{equation}
 		\end{minipage}
 	\end{frame}
-	\begin{frame}
-			\begin{minipage}{.6\textwidth}
-				\centering
-				\includegraphics[width=.7\textwidth]{Images/ConventionalSetup.pdf}
-			\end{minipage}
+	
+	\begin{frame}{Conventional approach}
+		\begin{minipage}{0.6\textwidth}
+			\centering
+			\only<1>{\includegraphics[width=.7\textwidth]{Images/ConventionalSetup_NoSam.pdf}}
+			\only<2->{\includegraphics[width=.7\textwidth]{Images/ConventionalSetup.pdf}}
+		\end{minipage}%
+		\hfill
+		\begin{minipage}{0.35\textwidth}
+			\[
+			\begin{aligned}
+				\uncover<1->{N_{\text{tot}}^{\text{ref}} &= \eta_{\text{idl}} N_{\mathrm{g}} + N_{\text{noise}}^{\text{ref}}} \\[0.5em]
+				\uncover<2->{N_{\text{tot}}^{\text{sam}} &= T\,\eta_{\text{idl}} N_{\mathrm{g}} + N_{\text{noise}}^{\text{sam}} } \\[1em]
+				\uncover<3->{\Rightarrow T &= \frac{\,N_{\text{tot}}^{\text{sam}} - N_{\text{noise}}^{\text{sam}}\,}
+				{\,N_{\text{tot}}^{\text{ref}} - N_{\text{noise}}^{\text{ref}}\,} }
+			\end{aligned}
+			\]
+		\end{minipage}
 	\end{frame}
+		
+	
+	\begin{frame}{Coincidence approach}
+		\begin{minipage}{.6\textwidth}
+			\centering
+			\only<1>{\includegraphics[width=.9\textwidth]{Images/CoincSetup_NoSam.pdf}}
+			\only<2->{\includegraphics[width=.9\textwidth]{Images/CoincSetup_Sam.pdf}}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.35\textwidth}
+			\[
+			\begin{aligned}
+				\uncover<1->{N_{\text{cc,tot}}^{\text{ref}} &= \eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}} + N_{\text{ac}}^{\text{ref}} } \\[1em]
+				\uncover<2->{N_{\text{cc,tot}}^{\text{sam}} &= T \,\eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}} + N_{\text{ac}}^{\text{sam}} } \\[1em]
+				\uncover<3->{
+				\Rightarrow T &= \frac{\,N_{\text{tot,cc}}^{\text{sam}} - N_{\text{ac}}^{\text{sam}}\,}{\,N_{\text{tot,cc}}^{\text{ref}} - N_{\text{ac}}^{\text{ref}}\,}
+				} 
+			\end{aligned}
+			\]
+		\end{minipage}
+	\end{frame}
+	
+%	\begin{aligned}
+%		\uncover<1->{N_{\text{cc,pure}}^{\text{ref}} &= \eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}} \\[0.5em]
+%			N_{\text{cc,tot}}^{\text{ref}} &= N_{\text{cc,pure}}^{\text{ref}} + N_{\text{ac}}^{\text{ref}} } \\[1em]
+%		\uncover<2->{N_{\text{cc,pure}}^{\text{sam}} &= T \,\eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}} \\[0.5em]
+%			N_{\text{cc,tot}}^{\text{sam}} &= N_{\text{cc,pure}}^{\text{sam}} + N_{\text{ac}}^{\text{sam}} } \\[1em]
+%		\uncover<3->{
+%			\Rightarrow T &= \frac{\,N_{\text{tot,cc}}^{\text{sam}} - N_{\text{ac}}^{\text{sam}}\,}{\,N_{\text{tot,cc}}^{\text{ref}} - N_{\text{ac}}^{\text{ref}}\,}
+%		} 
+%	\end{aligned}
+	
 	\begin{frame}{Transmittance model}
-			Conventional approach:
-			\begin{equation}
+		\begin{Block}{Conventional approach:}
+			\resizebox{\textwidth}{!}{$
 				\operatorname{Var}(T) 
-				= \left( \frac{1}{\eta_{\text{idl}}\,N_g} \right)^{2}
+				= \left( \frac{1}{\eta_{\text{idl}}\,N_{\mathrm{g}}} \right)^{2}
 				\Bigg[
-				\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right) 
-				+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right) 
+				\textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right)} 
+				+ \textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right)} 
 				+ T^{2} \Big[ 
-				\operatorname{Var}\!\left(N_{\text{tot}}^{\text{ref}}\right) 
-				+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{ref}}\right) 
+				\textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{tot}}^{\text{ref}}\right)} 
+				+ \textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{noise}}^{\text{ref}}\right) }
 				\Big]
 				\Bigg]
-				\label{eq:VarianceTransExpl}
-				\nonumber
-			\end{equation}
-			\vspace{2em}
-			Coincidence approach:
-			\begin{equation}
+			$}
+		\end{Block}
+		%\vspace{2em}
+		\begin{Block}{Coincidence approach:}
+			\resizebox{\textwidth}{!}{$
 				\operatorname{Var}(T) 
-				= \left( \frac{1}{\eta_{\text{sig}}\,\eta_{\text{idl}}\,N_g} \right)^{2}
+				= \left( \frac{1}{\eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}}} \right)^{2}
 				\Bigg[
-				\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right) 
-				+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) 
+				\textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right) }
+				+ \textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) }
 				+ T^{2} \Big[ 
-				\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{ref}}\right) 
-				+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{ref}}\right) 
+				\textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{ref}}\right) }
+				+ \textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{ac}}^{\text{ref}}\right) }
 				\Big]
 				\Bigg]
-				\label{eq:VarianceTransExplCoinc}
-				\nonumber
-			\end{equation}
+			$}
+		\end{Block}
 	\end{frame}
 	
 	
@@ -212,6 +255,38 @@
 			
 	\end{frame}
 	\section{Results}
+	
+	\begin{frame}{Dark counts}
+		\begin{minipage}{.45\textwidth}
+			\centering
+			\textbf{Idler arm}
+			\vspace{2em}
+			\includegraphics[width=\textwidth]{Images/DC_Idl_2.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.45\textwidth}
+			\centering
+			Signal arm
+			\vspace{2em}
+			\includegraphics[width=\textwidth]{Images/DC_Sig_2.pdf}
+		\end{minipage}
+	\end{frame}
+	
+	\begin{frame}{Single counts}
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\textbf{Idler arm}
+			\vspace{2em}
+			\includegraphics[width=\textwidth]{Images/SingleStatisticsIdler.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.5\textwidth}
+			\centering
+			Signal arm
+			\vspace{2em}
+			\includegraphics[width=\textwidth]{Images/SingleStatisticsSignal.pdf}
+		\end{minipage}
+	\end{frame}
 	
 	
 	

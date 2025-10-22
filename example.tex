@@ -15,6 +15,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{amsmath}
 \usepackage{accents}
 \usetikzlibrary{arrows.meta, positioning, calc}
 \pgfplotsset{compat=1.18}
@@ -249,20 +250,34 @@
 	\end{frame}
 	\begin{frame}{Photon statistics}
 		\begin{minipage}{.4\textwidth}
-			
+			\begin{tikzpicture}
+				\begin{axis}[
+					width=8cm,
+					height=6cm,
+					xlabel={$n$},
+					ylabel={$P(n)$},
+					ytick={0.002, 0.004, 0.006, 0.008,0.01, 0.012},
+					grid=major,
+					]
+					
+					\addplot table [x index=0, y index=1, header=false] {Images/photon_distributions.txt};
+					\addplot table [x index=0, y index=2, header=false] {Images/photon_distributions.txt};
+					
+				\end{axis}
+			\end{tikzpicture}
 		\end{minipage}
 		\hfill
 		\begin{minipage}{.5\textwidth}
 			Coherent light:
 			\begin{equation}
-				\mathcal{P}(n) = \frac{\langle n\rangle^{\,n}}{n!}\,e^{-\langle n\rangle}
+				\mathcal{P}(n) = \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle}
 				\nonumber
 			\end{equation}
-			\vspace{3em}
+			%\vspace{3em}
 			Thermal light:
 			\begin{equation}
 				\mathcal{P}_m(n) = \frac{(n+m-1)!}{(m-1)!\,n!}\,
-				\frac{\langle n\rangle^{\,n}}{\left(1+\langle n\rangle/m\right)^{m}\,\left(\langle n\rangle+m\right)^{n}} 
+				\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} 
 				\nonumber
 			\end{equation}
 		\end{minipage}

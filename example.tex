@@ -216,9 +216,10 @@
 	
 	\begin{frame}{Transmittance model}
 		\begin{Block}{Conventional approach:}
+			\vspace{0.5em}
 			\resizebox{\textwidth}{!}{$
 				\operatorname{Var}(T) 
-				= \left( \frac{1}{\eta_{\text{idl}}\,N_{\mathrm{g}}} \right)^{2}
+				= \left( \eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 				\Bigg[
 				\textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right)} 
 				+ \textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right)} 
@@ -231,9 +232,10 @@
 		\end{Block}
 		%\vspace{2em}
 		\begin{Block}{Coincidence approach:}
+			\vspace{0.5em}
 			\resizebox{\textwidth}{!}{$
 				\operatorname{Var}(T) 
-				= \left( \frac{1}{\eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}}} \right)^{2}
+				= \left( \eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 				\Bigg[
 				\textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right) }
 				+ \textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) }
@@ -244,6 +246,26 @@
 				\Bigg]
 			$}
 		\end{Block}
+	\end{frame}
+	\begin{frame}{Photon statistics}
+		\begin{minipage}{.4\textwidth}
+			
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.5\textwidth}
+			Coherent light:
+			\begin{equation}
+				\mathcal{P}(n) = \frac{\langle n\rangle^{\,n}}{n!}\,e^{-\langle n\rangle}
+				\nonumber
+			\end{equation}
+			\vspace{3em}
+			Thermal light:
+			\begin{equation}
+				\mathcal{P}_m(n) = \frac{(n+m-1)!}{(m-1)!\,n!}\,
+				\frac{\langle n\rangle^{\,n}}{\left(1+\langle n\rangle/m\right)^{m}\,\left(\langle n\rangle+m\right)^{n}} 
+				\nonumber
+			\end{equation}
+		\end{minipage}
 	\end{frame}
 	
 	
@@ -259,7 +281,7 @@
 	\begin{frame}{Dark counts}
 		\begin{minipage}{.45\textwidth}
 			\centering
-			\textbf{Idler arm}
+			Idler arm
 			\vspace{2em}
 			\includegraphics[width=\textwidth]{Images/DC_Idl_2.pdf}
 		\end{minipage}
@@ -273,18 +295,18 @@
 	\end{frame}
 	
 	\begin{frame}{Single counts}
-		\begin{minipage}{.5\textwidth}
+		\begin{minipage}{.45\textwidth}
 			\centering
-			\textbf{Idler arm}
+			Idler arm
 			\vspace{2em}
-			\includegraphics[width=\textwidth]{Images/SingleStatisticsIdler.pdf}
+			\includegraphics[width=\textwidth]{Images/SingleStatisticsIdler_3.pdf}
 		\end{minipage}
 		\hfill
-		\begin{minipage}{.5\textwidth}
+		\begin{minipage}{.45\textwidth}
 			\centering
 			Signal arm
 			\vspace{2em}
-			\includegraphics[width=\textwidth]{Images/SingleStatisticsSignal.pdf}
+			\includegraphics[width=\textwidth]{Images/SingleStatisticsSignal_3.pdf}
 		\end{minipage}
 	\end{frame}
 	

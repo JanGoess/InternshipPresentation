@@ -17,6 +17,7 @@
 \usepackage{pgfplots}
 \usepackage{amsmath}
 \usepackage{accents}
+\usepackage{booktabs}
 \usetikzlibrary{arrows.meta, positioning, calc}
 \pgfplotsset{compat=1.18}
 \newcommand{\myvect}[1]{\accentset{\rightharpoonup}{#1}}
@@ -252,34 +253,56 @@
 		\begin{minipage}{.4\textwidth}
 			\begin{tikzpicture}
 				\begin{axis}[
-					width=8cm,
-					height=6cm,
-					xlabel={$n$},
-					ylabel={$P(n)$},
-					ytick={0.002, 0.004, 0.006, 0.008,0.01, 0.012},
-					grid=major,
+					width=1.2\linewidth,
+					height=1.4\linewidth,
+					xlabel={$n [a.u.]$},
+					ylabel={$\mathcal{P}(n) [a.u.]$},
+					xticklabels={},
+					yticklabels={},
+					%grid=major,
+					scaled y ticks = false,
+					tick label style={font=\small},
+					label style={font=\small},
+					legend style={font=\tiny,
+						draw=none,      
+						fill=none,  },
 					]
+					\visible<2->{
+					\addplot [mark=none, color=blue, very thick] 
+					table [x index=0, y index=1, header=false] {Images/photon_distributions.txt};
+					\addlegendentry{coherent}
+					}
 					
-					\addplot table [x index=0, y index=1, header=false] {Images/photon_distributions.txt};
-					\addplot table [x index=0, y index=2, header=false] {Images/photon_distributions.txt};
-					
+					\visible<3->{
+					\addplot [mark=none, color=black, very thick] 
+					table [x index=0, y index=2, header=false] {Images/photon_distributions.txt};
+					\addlegendentry{thermal}
+					}
 				\end{axis}
 			\end{tikzpicture}
 		\end{minipage}
 		\hfill
 		\begin{minipage}{.5\textwidth}
+			\visible<2->{
 			Coherent light:
-			\begin{equation}
-				\mathcal{P}(n) = \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle}
-				\nonumber
-			\end{equation}
+			\[
+			\begin{aligned}
+				\mathcal{P}(n) &= \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle} \\ \vspace{3em}
+				\operatorname{Var}(n) &= \langle n\rangle
+			\end{aligned}
+			\]
+			}
 			%\vspace{3em}
+			\visible<3->{
 			Thermal light:
-			\begin{equation}
-				\mathcal{P}_m(n) = \frac{(n+m-1)!}{(m-1)!\,n!}\,
-				\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} 
-				\nonumber
-			\end{equation}
+			\[
+			\begin{aligned}
+				\mathcal{P}_m(n) &= \frac{(n+m-1)!}{(m-1)!\,n!}\,
+				\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} \\ \vspace{3em}
+				\operatorname{Var}(n) &= \langle n\rangle \left(1+\frac{\langle n\rangle}{m}\right)
+			\end{aligned}
+			\]
+			}
 		\end{minipage}
 	\end{frame}
 	
@@ -325,6 +348,58 @@
 		\end{minipage}
 	\end{frame}
 	
+	\begin{frame}{Coincidence counts}
+		\begin{minipage}{.45\textwidth}
+			\centering
+			Coincidences
+			\vspace{2em}
+			\includegraphics[width=\textwidth]{Images/CoincStatistics_2.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.45\textwidth}
+			\centering
+			Accidentals
+			\vspace{2em}
+			\includegraphics[width=\textwidth]{Images/AccCountsStatistics_2.pdf}
+		\end{minipage}
+	\end{frame}
+	
+	
+	\section{Simulation}
+	\begin{frame}{Simulation}
+		\begin{minipage}{.55\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/SimulationSweepRateIdl_2}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.35\textwidth}
+			\resizebox{\linewidth}{!}{%
+				\begin{tabular}{@{}l@{\hspace{50pt}}lll@{}}
+					\toprule[1.5pt]
+					\textbf{Parameter} &  \textbf{Value}\\
+					\midrule
+					$\eta_{\text{idl}}$ (\%) & 0.09 \\
+					$\eta_{\text{sig}}$ (\%) & 2.6 \\
+					$R_{\text{idl}}$ (kHz) & 3 - 100 \\
+					$R_{\text{noise,idl}}$ (kHz) & 1000\\
+					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
+					$T$ (1) & 0.9\\
+					\bottomrule[1.5pt]
+				\end{tabular}
+			}
+		\end{minipage}
+	\end{frame}
+	
+	\section{Summary}
+	\begin{frame}{Summary and Outlook}
+		\begin{Block}{Git repository}
+			public accessible:\\
+			{\scriptsize\url{https://git.tpi.uni-jena.de/mstnhsr/latexbeamer_corporatedesign}}
+		\end{Block}
+		\begin{Block}{Feedback}
+			marc.steinhauser@uni-jena.de
+		\end{Block}
+	\end{frame}
 	
 	
 	
@@ -342,46 +417,17 @@
 			\end{itemize}
 		\end{block}
 		\begin{Block}{Block environment (upper-case B)}
-		enumerate:
-		\begin{enumerate}
-			\item First Level
+			enumerate:
 			\begin{enumerate}
-				\item Second Level
+				\item First Level
 				\begin{enumerate}
-					\item Third Level
+					\item Second Level
+					\begin{enumerate}
+						\item Third Level
+					\end{enumerate}
 				\end{enumerate}
 			\end{enumerate}
-		\end{enumerate}
 		\end{Block}
 	\end{frame}
-	
-	\section{Simulation}
-	\begin{frame}{Font types}
-		\begin{table}
-			\begin{tabular}{ll}
-				Normal & Lorem ipsum dolor sit amet, consectetur adipiscing elit.\\
-				\textbf{Bold} & \textbf{Lorem ipsum dolor sit amet, consectetur adipiscing elit.}\\
-				\textit{Italic} & \textit{Lorem ipsum dolor sit amet, consectetur adipiscing elit.}\\
-				\textbf{\textit{BoldItalic}} & \textbf{\textit{Lorem ipsum dolor sit amet, consectetur adipiscing elit.}}
-			\end{tabular}
-		\end{table}
-		\begin{equation}
-			\textrm{e}^{\textrm{i}\pi}+1=0
-			\label{eq1}
-		\end{equation}
-		Equations like eq.~\eqref{eq1} use the beamer default font computer modern.
-	\end{frame}
-	
-	\section{Summary}
-	\begin{frame}{Summary and Outlook}
-		\begin{Block}{Git repository}
-			public accessible:\\
-			{\scriptsize\url{https://git.tpi.uni-jena.de/mstnhsr/latexbeamer_corporatedesign}}
-		\end{Block}
-		\begin{Block}{Feedback}
-			marc.steinhauser@uni-jena.de
-		\end{Block}
-	\end{frame}
-	
 \end{document}
  

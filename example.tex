@@ -22,6 +22,22 @@
 \pgfplotsset{compat=1.18}
 \newcommand{\myvect}[1]{\accentset{\rightharpoonup}{#1}}
 
+\usetikzlibrary{angles, quotes, shapes, decorations.markings, calc, arrows.meta,3d, shapes.multipart}
+% Styles
+%% Node Style in Order Text to Get Center Alignment
+\tikzset{every text node part/.style={align=center}}
+%% Bottom Ray Outside Box
+\tikzset{
+	every text node part/.style = {align=center},
+	rayE2/.style = {
+		postaction = decorate,
+		decoration = {
+			markings,
+			mark = at position 0.52 with {\arrow{stealth}}
+		}
+	}
+}
+
 \title[Parameter estimation]{Parameter estimation\\with correlated photon pairs}
 \author[Jan Gößwein]{Jan Gößwein}
 \date{Jena, \today}
@@ -58,86 +74,171 @@
 	\end{frame}
 	
 	\section{Theory}
+	
 	\begin{frame}{SPDC}
-		\begin{figure}
-			\centering
-			\begin{minipage}{.4\textwidth}
+
+			\begin{minipage}{.45\textwidth}
 			\begin{center}
 				\resizebox{\textwidth}{!}{%
 					\begin{tikzpicture}
 						%\useasboundingbox (0,0) rectangle (10,14);
 						\tikzstyle{every node}=[font=\LARGE]
 						
-						\pgfmathsetmacro{\yTop}{12.5}
-						\pgfmathsetmacro{\yBottom}{9.25}
-						\pgfmathsetmacro{\yMid}{\yBottom + 0.6*(\yTop - \yBottom)}
-						\pgfmathsetmacro{\pLab}{\yBottom + 0.5*(\yTop - \yBottom)}
-						\pgfmathsetmacro{\sLab}{\yBottom + 0.3*(\yTop - \yBottom)}
-						\pgfmathsetmacro{\iLab}{\yBottom + 0.8*(\yTop - \yBottom)}
+						\draw [line width=2.5pt, rayE2,color=blue] (2.5,15.25) -- (6.25,15.25);
+						\draw [line width=2.5pt, rayE2,color=black!40!green] (8.5,15.25) -- (12,16.75);
+						\draw [line width=2.5pt, rayE2,color=red] (8.5,15.25) -- (12,13.75);
+						\draw [ fill=black!10 , line width=1.6pt , rounded corners = 9.0] (6.25,16) rectangle (8.5,14.5);
 						
-						
-						\draw [line width=2.5pt] (3.5,\yBottom) -- (12.5,\yBottom);
-						\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt,-{Latex[length=4mm]}] (5,\yBottom) -- (5,\yTop);
-						\draw [line width=2.3pt, dashed] (3.75,\yTop) -- (12.5,\yTop);
-						\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=2pt,-{Latex[length=4mm]}] (10,\yTop) -- (10,\yMid);
-						\draw [ color=black!40!green, line width=2pt,-{Latex[length=4mm]}] (10,\yMid) -- (10,\yBottom);
-						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at (4.25,\pLab) {$\omega_{\text{p}}$};
-						\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at (10.5,\iLab) {$\omega_{\text{i}}$};
-						\node [font=\LARGE, color=black!40!green] at (10.5,\sLab) {$\omega_{\text{s}}$};
-						
-						\node [font=\LARGE] at (8,13.75) {Energy\,\,conservation};
-						
-						\end{tikzpicture}
-					}%
-			\end{center}
-			%\vspace[2em]
-			\begin{equation}
-					\omega_{\text{p}} = \omega_{\text{s}} + \omega_{\text{i}}
-				\nonumber
-			\end{equation} 
-		\end{minipage}
-		\hfill
-		\begin{minipage}{.4\textwidth}
-			\begin{center}
-				\resizebox{\textwidth}{!}{%
-					\begin{tikzpicture}
-						%\useasboundingbox (0,0) rectangle (10,14);
-						\tikzstyle{every node}=[font=\LARGE]
-						\draw [ color={rgb,255:red,0; green,0; blue,255}, line 	width=2pt, -{Latex[length=4mm]}] (15,10.25) -- (23,10.25);
-						\draw [ color={rgb,255:red,0; green,0; blue,0}, line width=2pt, 	-{Latex[length=4mm]}] (23,10.25) -- (24,10.25);
-						\draw [ color={rgb,255:red,255; green,0; blue,0}, line 	width=2pt, -{Latex[length=4mm]}] (15,11.5) -- (18,11.5);
-						\draw [ color=black!40!green, line width=2pt, 	-{Latex[length=4mm]}] (18,11.5) -- (24,11.5);
-						
-						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$k_{\text{p}}$};
-						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
-						\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$k_{\text{i}}$};
-						\node [font=\LARGE, color=black!40!green] at (21,12) 	{$k_{\text{s}}$};
-						
-						
-						\node [font=\LARGE] at (19.25,13.75) {Momentum\,\,conservation};
-						
-						% Coordinates
-						\coordinate (A) at (7,6.5);
-						\coordinate (B) at (10.5,6.5);
-						%
-						\coordinate (B') at (14.5,7);
-						\coordinate (B'') at (14.5,6);
-						\coordinate (C') at (18,7);
-						\coordinate (C'') at (18,6);
-			
-				\end{tikzpicture}
+						\node at (7.45,15.25) {$\chi^2$};
+						\node at (4.4,15.75) [color=blue] { $\lambda_{\text{p}}$};
+						\node at (10.3,16.8) [color=black!40!green] { $\lambda_{\text{s}}$};
+						\node at (10.3,13.7) [color=red] { $\lambda_{\text{i}}$};
+					\end{tikzpicture}
 				}%
 			\end{center}
-			%\vspace[2em]
-			\begin{equation}
-					\myvect{k}_{\text{p}} = \myvect{k}_{\text{s}} + 	\myvect{k}_{\text{i}} - 	\Delta \myvect{k}
-				\nonumber
-			\end{equation} 
-		\end{minipage}
-					
-		\end{figure}
+			\end{minipage}
+			\hfill
+			\begin{minipage}{.45\textwidth}
+		
+			\begin{minipage}{.8\textwidth}
+				\begin{center}
+					\resizebox{\textwidth}{!}{%
+						\begin{tikzpicture}
+							%\useasboundingbox (0,0) rectangle (10,14);
+							\tikzstyle{every node}=[font=\LARGE]
+							
+							\pgfmathsetmacro{\yTop}{12.5}
+							\pgfmathsetmacro{\yBottom}{9.25}
+							\pgfmathsetmacro{\yMid}{\yBottom + 0.6*(\yTop - \yBottom)}
+							\pgfmathsetmacro{\pLab}{\yBottom + 0.5*(\yTop - \yBottom)}
+							\pgfmathsetmacro{\sLab}{\yBottom + 0.3*(\yTop - \yBottom)}
+							\pgfmathsetmacro{\iLab}{\yBottom + 0.8*(\yTop - \yBottom)}
+							
+							
+							\draw [line width=2.5pt] (3.5,\yBottom) -- (12.5,\yBottom);
+							\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2.5pt,-{Latex[length=4mm]}] (5,\yBottom) -- (5,\yTop);
+							\draw [line width=2.3pt, dashed] (3.75,\yTop) -- (12.5,\yTop);
+							\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=2.5pt,-{Latex[length=4mm]}] (10,\yTop) -- (10,\yMid);
+							\draw [ color=black!40!green, line width=2.5pt,-{Latex[length=4mm]}] (10,\yMid) -- (10,\yBottom);
+							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at (4.25,\pLab) {$\omega_{\text{p}}$};
+							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at (10.5,\iLab) {$\omega_{\text{i}}$};
+							\node [font=\LARGE, color=black!40!green] at (10.5,\sLab) {$\omega_{\text{s}}$};
+							
+							\node [font=\LARGE] at (8,13.75) {Energy\,\,conservation};
+							
+						\end{tikzpicture}
+					}%
+				\end{center}
+				%\vspace[2em]
+				{\footnotesize
+					\[
+						\omega_{\text{p}} = \omega_{\text{s}} + \omega_{\text{i}}
+					\]
+				}
+			\end{minipage}
+
+			\begin{minipage}{.8\textwidth}
+				\begin{center}
+					\resizebox{\textwidth}{!}{%
+						\begin{tikzpicture}
+							%\useasboundingbox (0,0) rectangle (10,14);
+							\tikzstyle{every node}=[font=\LARGE]
+							\draw [ color={rgb,255:red,0; green,0; blue,255}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,10.25) -- (23,10.25);
+							\draw [ color={rgb,255:red,0; green,0; blue,0}, line width=2.5pt, 	-{Latex[length=4mm]}] (23,10.25) -- (24,10.25);
+							\draw [ color={rgb,255:red,255; green,0; blue,0}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,11.5) -- (18,11.5);
+							\draw [ color=black!40!green, line width=2.5pt, 	-{Latex[length=4mm]}] (18,11.5) -- (24,11.5);
+							
+							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$k_{\text{p}}$};
+							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
+							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$k_{\text{i}}$};
+							\node [font=\LARGE, color=black!40!green] at (21,12) 	{$k_{\text{s}}$};
+							\node [font=\LARGE] at (19.25,13.75) {Momentum\,\,conservation};
+						\end{tikzpicture}
+						 
+					}%
+				\end{center}
+				%\vspace[2em]
+				{\footnotesize
+					\[
+					\myvect{k}_{\text{p}} = \myvect{k}_{\text{s}} + \myvect{k}_{\text{i}} - \Delta \myvect{k}
+					\]
+				}
+			\end{minipage}
+
+			\end{minipage}
 	\end{frame}
 	
+	
+	
+%	\begin{frame}{SPDC}
+%		\begin{figure}
+%			\centering
+%			\begin{minipage}{.4\textwidth}
+%			\begin{center}
+%				\resizebox{\textwidth}{!}{%
+%					\begin{tikzpicture}
+%						%\useasboundingbox (0,0) rectangle (10,14);
+%						\tikzstyle{every node}=[font=\LARGE]
+%						
+%						\pgfmathsetmacro{\yTop}{12.5}
+%						\pgfmathsetmacro{\yBottom}{9.25}
+%						\pgfmathsetmacro{\yMid}{\yBottom + 0.6*(\yTop - \yBottom)}
+%						\pgfmathsetmacro{\pLab}{\yBottom + 0.5*(\yTop - \yBottom)}
+%						\pgfmathsetmacro{\sLab}{\yBottom + 0.3*(\yTop - \yBottom)}
+%						\pgfmathsetmacro{\iLab}{\yBottom + 0.8*(\yTop - \yBottom)}
+%						
+%						
+%						\draw [line width=2.5pt] (3.5,\yBottom) -- (12.5,\yBottom);
+%						\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt,-{Latex[length=4mm]}] (5,\yBottom) -- (5,\yTop);
+%						\draw [line width=2.3pt, dashed] (3.75,\yTop) -- (12.5,\yTop);
+%						\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=2pt,-{Latex[length=4mm]}] (10,\yTop) -- (10,\yMid);
+%						\draw [ color=black!40!green, line width=2pt,-{Latex[length=4mm]}] (10,\yMid) -- (10,\yBottom);
+%						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at (4.25,\pLab) {$\omega_{\text{p}}$};
+%						\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at (10.5,\iLab) {$\omega_{\text{i}}$};
+%						\node [font=\LARGE, color=black!40!green] at (10.5,\sLab) {$\omega_{\text{s}}$};
+%						
+%						\node [font=\LARGE] at (8,13.75) {Energy\,\,conservation};
+%					
+%						
+%						\end{tikzpicture}
+%					}%
+%			\end{center}
+%			%\vspace[2em]
+%			\begin{equation}
+%					\omega_{\text{p}} = \omega_{\text{s}} + \omega_{\text{i}}
+%				\nonumber
+%			\end{equation} 
+%		\end{minipage}
+%		\hfill
+%		\begin{minipage}{.4\textwidth}
+%			\begin{center}
+%				\resizebox{\textwidth}{!}{%
+%					\begin{tikzpicture}
+%						%\useasboundingbox (0,0) rectangle (10,14);
+%						\tikzstyle{every node}=[font=\LARGE]
+%						\draw [ color={rgb,255:red,0; green,0; blue,255}, line 	width=2pt, -{Latex[length=4mm]}] (15,10.25) -- (23,10.25);
+%						\draw [ color={rgb,255:red,0; green,0; blue,0}, line width=2pt, 	-{Latex[length=4mm]}] (23,10.25) -- (24,10.25);
+%						\draw [ color={rgb,255:red,255; green,0; blue,0}, line 	width=2pt, -{Latex[length=4mm]}] (15,11.5) -- (18,11.5);
+%						\draw [ color=black!40!green, line width=2pt, 	-{Latex[length=4mm]}] (18,11.5) -- (24,11.5);
+%						
+%						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$k_{\text{p}}$};
+%						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
+%						\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$k_{\text{i}}$};
+%						\node [font=\LARGE, color=black!40!green] at (21,12) 	{$k_{\text{s}}$};
+%						\node [font=\LARGE] at (19.25,13.75) {Momentum\,\,conservation};
+%				\end{tikzpicture}
+%				}%
+%			\end{center}
+%			%\vspace[2em]
+%			\begin{equation}
+%					\myvect{k}_{\text{p}} = \myvect{k}_{\text{s}} + 	\myvect{k}_{\text{i}} - 	\Delta \myvect{k}
+%				\nonumber
+%			\end{equation} 
+%		\end{minipage}
+%					
+%		\end{figure}
+%	\end{frame}
+
 	\begin{frame}{Transmittance model}
 		\begin{minipage}{.4\textwidth}
 			\centering
@@ -232,7 +333,7 @@
 				\Bigg]
 			$}
 		\end{Block}
-		%\vspace{2em}
+		\vspace*{2em}
 		\begin{Block}{Coincidence approach:}
 			\vspace{0.5em}
 			\resizebox{\textwidth}{!}{$
@@ -251,12 +352,13 @@
 	\end{frame}
 	\begin{frame}{Photon statistics}
 		\begin{minipage}{.4\textwidth}
+			\visible<2->{
 			\begin{tikzpicture}
 				\begin{axis}[
 					width=1.2\linewidth,
 					height=1.4\linewidth,
-					xlabel={$n [a.u.]$},
-					ylabel={$\mathcal{P}(n) [a.u.]$},
+					xlabel={$n\,\,[a.u.]$},
+					ylabel={$\mathcal{P}(n)\,\,[a.u.]$},
 					xticklabels={},
 					yticklabels={},
 					%grid=major,
@@ -267,19 +369,20 @@
 						draw=none,      
 						fill=none,  },
 					]
-					\visible<2->{
+					\only<2->{
 					\addplot [mark=none, color=blue, very thick] 
 					table [x index=0, y index=1, header=false] {Images/photon_distributions.txt};
 					\addlegendentry{coherent}
 					}
 					
-					\visible<3->{
+					\only<3->{
 					\addplot [mark=none, color=black, very thick] 
 					table [x index=0, y index=2, header=false] {Images/photon_distributions.txt};
 					\addlegendentry{thermal}
 					}
 				\end{axis}
 			\end{tikzpicture}
+			}
 		\end{minipage}
 		\hfill
 		\begin{minipage}{.5\textwidth}
@@ -287,18 +390,17 @@
 			Coherent light:
 			\[
 			\begin{aligned}
-				\mathcal{P}(n) &= \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle} \\ \vspace{3em}
+				\mathcal{P}(n) &= \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle} \\ \vspace{5em}
 				\operatorname{Var}(n) &= \langle n\rangle
 			\end{aligned}
 			\]
 			}
-			%\vspace{3em}
 			\visible<3->{
 			Thermal light:
 			\[
 			\begin{aligned}
 				\mathcal{P}_m(n) &= \frac{(n+m-1)!}{(m-1)!\,n!}\,
-				\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} \\ \vspace{3em}
+				\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} \\ \vspace{5em}
 				\operatorname{Var}(n) &= \langle n\rangle \left(1+\frac{\langle n\rangle}{m}\right)
 			\end{aligned}
 			\]
@@ -366,6 +468,80 @@
 	
 	
 	\section{Simulation}
+	\begin{frame}{Simulation}
+		\begin{Block}{Conventional approach:}
+			\vspace{0.5em}
+			\only<1>{
+				\resizebox{\textwidth}{!}{$
+					\operatorname{Var}(T) 
+					= \left( \eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
+					\Bigg[
+					\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right)
+					+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right)
+					+ T^{2}\Big[
+					\operatorname{Var}\!\left(N_{\text{tot}}^{\text{ref}}\right)
+					+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{ref}}\right)
+					\Big]
+					\Bigg]
+					$}
+			}
+			
+			% version with <N>
+			\only<2->{%
+				\resizebox{\textwidth}{!}{$
+					\operatorname{Var}(T) 
+					= \left( \eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
+					\Bigg[\textcolor{red}{2.2\cdot
+					\langle N_{\text{tot}}^{\text{sam}}\rangle}
+					+ \textcolor{red}{1.8\cdot\langle N_{\text{noise}}^{\text{sam}}\rangle}
+					+ T^{2}\Big[
+					\textcolor{red}{2.2\cdot\langle N_{\text{tot}}^{\text{ref}}\rangle}
+					+ \textcolor{red}{1.8\cdot\langle N_{\text{noise}}^{\text{ref}}\rangle}
+					\Big]
+					\Bigg]
+					$}
+			}
+		\end{Block}
+		
+
+		\vspace*{2em}
+		\visible<3->{
+		\begin{Block}{Coincidence approach:}
+			\vspace{0.5em}
+			\only<3>{
+				\resizebox{\textwidth}{!}{$
+					\operatorname{Var}(T) 
+					= \left( \eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
+					\Bigg[
+					\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right)
+					+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) 
+					+ T^{2} \Big[ 
+				\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{ref}}\right) 
+					+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{ref}}\right) 
+					\Big]
+					\Bigg]
+					$}
+			}
+			
+			% version with <N>
+			\only<4->{%
+				\centering
+				\resizebox{.8\textwidth}{!}{$
+					\operatorname{Var}(T) 
+					= \left( \eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
+					\Bigg[
+					\textcolor{red}{\langle N_{\text{tot,cc}}^{\text{sam}}\rangle }
+					+ \textcolor{red}{\langle N_{\text{ac}}^{\text{sam}}\rangle }
+					+ T^{2} \Big[ 
+					\textcolor{red}{\langle N_{\text{tot,cc}}^{\text{ref}}\rangle }
+					+ \textcolor{red}{\langle N_{\text{ac}}^{\text{ref}}\rangle }
+					\Big]
+					\Bigg]
+					$}
+			}
+		\end{Block}
+		}
+	\end{frame}
 	\begin{frame}{Simulation}
 		\begin{minipage}{.55\textwidth}
 			\centering

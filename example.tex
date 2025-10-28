@@ -10,6 +10,9 @@
 % 141 (1.41:1, 148.5mm:105mm, ratio of DinA)
 
 \usepackage{color}
+\usepackage[backend=biber,style=authoryear]{biblatex} % or any other style you prefer
+\addbibresource{references.bib}
+
 
 % graphic settings
 \usepackage{graphicx}
@@ -38,6 +41,20 @@
 	}
 }
 
+% Custom citation: author + title only
+\DeclareCiteCommand{\authortitlefootcite}
+{\usebibmacro{prenote}}
+{%
+	\printnames{labelname}%
+	\addcomma\space%
+	\printfield[citetitle]{title}%
+}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+
+
+
 \title[Parameter estimation]{Parameter estimation\\with correlated photon pairs}
 \author[Jan Gößwein]{Jan Gößwein}
 \date{Jena, \today}
@@ -62,31 +79,23 @@
 	\showheadlinetrue
 	
 	\section{Motivation}
-	\begin{frame}{Motivation}
-		%		I like LaTeX and the corporate design.\footnote{Corporate Font = Roboto Condensed}
-		%		\begin{figure}
-			%			\centering
-			%			\includegraphics[height=2cm]{./data/UniJena_Wortmarke_blue.png}
-			%			\label{fig1}
-			%			\caption{This figure shows the corporate font.}
-			%		\end{figure}
-		%		\textcolor{fsuPhysik}{\textbf{Attention: This LaTeX file must be compiled with XeLaTeX or LuaLaTeX!}}
-	\end{frame}
-	
+		
 	\begin{frame}{Motivation}
 			% Start a TikZ picture environment
 			\begin{tikzpicture}[baseline, node distance=0.5cm and 5cm]
 				% Top image
-				\node (a) {\includegraphics[width=.25\textwidth]{Images/NoisyImage.pdf}};
+				\node (a) {\includegraphics[width=.1\textwidth]{Images/NoisyImage.pdf}};
 				% Bottom image
-				\node (b) [below=of a] {\includegraphics[width=.25\textwidth]{Images/BetterImage.pdf}};
+				\node (b) [below=of a] {\includegraphics[width=.1\textwidth]{Images/BetterImage.pdf}};
 				% Left image, vertically centered between a and b
-				\node (p) [left=of $(a)!0.5!(b)$] {\includegraphics[width=.25\textwidth]{Images/PureImage.pdf}};
+				\node (p) [left=of $(a)!0.5!(b)$] {\includegraphics[width=.1\textwidth]{Images/PureImage.pdf}};
 				
 				% Arrows
-				\draw[->, thick] (p.east) -- node[above] {add noise} (a.west);
-				\draw[->, thick, bend left=20] (a.east) to node[right] {$|\phi\rangle$ ?} (b.east);
+				\draw[-{Latex[length=2mm]}, thick] (p.east) -- node[above,rotate=28] {add noise} (a.west);
+				\draw[-{Latex[length=2mm]}, thick, bend left=20] (a.east) to node[right] {$|\phi\rangle$ \footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}}} (b.east);
 			\end{tikzpicture}
+			\vspace*{2em}
+			\textbf{Objective:} Can coincidence measurements provide advantages in terms of precision in noisy regimes?
 	\end{frame}
 	
 	\section{Theory}
@@ -191,104 +200,28 @@
 
 			\end{minipage}
 	\end{frame}
-	
-	
-	
-%	\begin{frame}{SPDC}
-%		\begin{figure}
-%			\centering
-%			\begin{minipage}{.4\textwidth}
-%			\begin{center}
-%				\resizebox{\textwidth}{!}{%
-%					\begin{tikzpicture}
-%						%\useasboundingbox (0,0) rectangle (10,14);
-%						\tikzstyle{every node}=[font=\LARGE]
-%						
-%						\pgfmathsetmacro{\yTop}{12.5}
-%						\pgfmathsetmacro{\yBottom}{9.25}
-%						\pgfmathsetmacro{\yMid}{\yBottom + 0.6*(\yTop - \yBottom)}
-%						\pgfmathsetmacro{\pLab}{\yBottom + 0.5*(\yTop - \yBottom)}
-%						\pgfmathsetmacro{\sLab}{\yBottom + 0.3*(\yTop - \yBottom)}
-%						\pgfmathsetmacro{\iLab}{\yBottom + 0.8*(\yTop - \yBottom)}
-%						
-%						
-%						\draw [line width=2.5pt] (3.5,\yBottom) -- (12.5,\yBottom);
-%						\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2pt,-{Latex[length=4mm]}] (5,\yBottom) -- (5,\yTop);
-%						\draw [line width=2.3pt, dashed] (3.75,\yTop) -- (12.5,\yTop);
-%						\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=2pt,-{Latex[length=4mm]}] (10,\yTop) -- (10,\yMid);
-%						\draw [ color=black!40!green, line width=2pt,-{Latex[length=4mm]}] (10,\yMid) -- (10,\yBottom);
-%						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at (4.25,\pLab) {$\omega_{\text{p}}$};
-%						\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at (10.5,\iLab) {$\omega_{\text{i}}$};
-%						\node [font=\LARGE, color=black!40!green] at (10.5,\sLab) {$\omega_{\text{s}}$};
-%						
-%						\node [font=\LARGE] at (8,13.75) {Energy\,\,conservation};
-%					
-%						
-%						\end{tikzpicture}
-%					}%
-%			\end{center}
-%			%\vspace[2em]
-%			\begin{equation}
-%					\omega_{\text{p}} = \omega_{\text{s}} + \omega_{\text{i}}
-%				\nonumber
-%			\end{equation} 
-%		\end{minipage}
-%		\hfill
-%		\begin{minipage}{.4\textwidth}
-%			\begin{center}
-%				\resizebox{\textwidth}{!}{%
-%					\begin{tikzpicture}
-%						%\useasboundingbox (0,0) rectangle (10,14);
-%						\tikzstyle{every node}=[font=\LARGE]
-%						\draw [ color={rgb,255:red,0; green,0; blue,255}, line 	width=2pt, -{Latex[length=4mm]}] (15,10.25) -- (23,10.25);
-%						\draw [ color={rgb,255:red,0; green,0; blue,0}, line width=2pt, 	-{Latex[length=4mm]}] (23,10.25) -- (24,10.25);
-%						\draw [ color={rgb,255:red,255; green,0; blue,0}, line 	width=2pt, -{Latex[length=4mm]}] (15,11.5) -- (18,11.5);
-%						\draw [ color=black!40!green, line width=2pt, 	-{Latex[length=4mm]}] (18,11.5) -- (24,11.5);
-%						
-%						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$k_{\text{p}}$};
-%						\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
-%						\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$k_{\text{i}}$};
-%						\node [font=\LARGE, color=black!40!green] at (21,12) 	{$k_{\text{s}}$};
-%						\node [font=\LARGE] at (19.25,13.75) {Momentum\,\,conservation};
-%				\end{tikzpicture}
-%				}%
-%			\end{center}
-%			%\vspace[2em]
-%			\begin{equation}
-%					\myvect{k}_{\text{p}} = \myvect{k}_{\text{s}} + 	\myvect{k}_{\text{i}} - 	\Delta \myvect{k}
-%				\nonumber
-%			\end{equation} 
-%		\end{minipage}
-%					
-%		\end{figure}
-%	\end{frame}
 
-	\begin{frame}{Transmittance model}
+
+	\begin{frame}{Parameter estimation}
+		\visible<1->{\textbf{Setup:} Transmission setup}\\
+		\visible<2->{\textbf{Parameter:} Transmittance $T$}\\
+		\visible<3->{\textbf{Estimator:} $\operatorname{Var}(T)$} \vspace*{2em}
+		
+		\visible<4->{
 		\begin{minipage}{.4\textwidth}
 			\centering
-			Conventional approach:
-			\begin{equation}
-				\begin{aligned}
-					N_{\text{tot}}^{\text{ref}} &= \eta_{\text{idl}} \, N_{\mathrm{g}} 	+ N_{\text{noise}}^{\text{ref}} \\[0.5em]
-					N_{\text{tot}}^{\text{sam}} &= T \, \eta_{\text{idl}} \, 	N_{\mathrm{g}} + N_{\text{noise}}^{\text{sam}}
-				\end{aligned}
-				\label{eq:SingleSam}
-				\nonumber
-			\end{equation}
+			Conventional approach:\vspace*{1em}
+			\includegraphics[width=.8\textwidth]{Images/ConventionalSetup.pdf}
 		\end{minipage}
+		}
 		\hfill
+		\visible<5->{
 		\begin{minipage}{.4\textwidth}
 			\centering
-			Coincidence approach:
-			\begin{equation}
-				\begin{aligned}
-					N_{\text{cc}}^{\text{pure,sam}} &= T \,\eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}}, \\[0.5em]
-					N_{\text{cc}}^{\text{pure,ref}} &= \eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}}
-				\end{aligned}
-				\label{eq:pureCoinc}
-				\nonumber
-			\end{equation}
+			Coincidence approach:\vspace*{1.3em}
+			\includegraphics[width=\textwidth]{Images/CoincSetup_Sam.pdf}
 		\end{minipage}
+		}
 	\end{frame}
 	
 	\begin{frame}{Conventional approach}
@@ -374,75 +307,107 @@
 			$}
 		\end{Block}
 	\end{frame}
-	\begin{frame}{Photon statistics}
-		\begin{minipage}{.4\textwidth}
-			\visible<2->{
-			\begin{tikzpicture}
-				\begin{axis}[
-					width=1.2\linewidth,
-					height=1.4\linewidth,
-					xlabel={$n\,\,[a.u.]$},
-					ylabel={$\mathcal{P}(n)\,\,[a.u.]$},
-					xticklabels={},
-					yticklabels={},
-					%grid=major,
-					scaled y ticks = false,
-					tick label style={font=\small},
-					label style={font=\small},
-					legend style={font=\tiny,
-						draw=none,      
-						fill=none,  },
-					]
-					\only<2->{
-					\addplot [mark=none, color=blue, very thick] 
-					table [x index=0, y index=1, header=false] {Images/photon_distributions.txt};
-					\addlegendentry{coherent}
-					}
-					
-					\only<3->{
-					\addplot [mark=none, color=black, very thick] 
-					table [x index=0, y index=2, header=false] {Images/photon_distributions.txt};
-					\addlegendentry{thermal}
-					}
-				\end{axis}
-			\end{tikzpicture}
-			}
-		\end{minipage}
-		\hfill
-		\begin{minipage}{.5\textwidth}
-			\visible<2->{
-			Coherent light:
-			\[
-			\begin{aligned}
-				\mathcal{P}(n) &= \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle} \\ \vspace{5em}
-				\operatorname{Var}(n) &= \langle n\rangle (Poisson)
-			\end{aligned}
-			\]
-			}
-			\visible<3->{
-			Thermal light:
-			\[
-			\begin{aligned}
-				\mathcal{P}_m(n) &= \frac{(n+m-1)!}{(m-1)!\,n!}\,
-				\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} \\ \vspace{5em}
-				\operatorname{Var}(n) &= \langle n\rangle \left(1+\frac{\langle n\rangle}{m}\right) (mmBE)
-			\end{aligned}
-			\]
-			}
-		\end{minipage}
-	\end{frame}
+%	\begin{frame}{Photon statistics}
+%		\begin{minipage}{.3\textwidth}
+%			\visible<2->{
+%			\begin{tikzpicture}
+%				\begin{axis}[
+%					width=1.2\linewidth,
+%					height=1.4\linewidth,
+%					xlabel={$n\,\,[a.u.]$},
+%					ylabel={$\mathcal{P}(n)\,\,[a.u.]$},
+%					xticklabels={},
+%					yticklabels={},
+%					%grid=major,
+%					scaled y ticks = false,
+%					tick label style={font=\small},
+%					label style={font=\small},
+%					legend style={font=\tiny,
+%						draw=none,      
+%						fill=none,  },
+%					]
+%					\only<2->{
+%					\addplot [mark=none, color=blue, very thick] 
+%					table [x index=0, y index=1, header=false] {Images/photon_distributions.txt};
+%					\addlegendentry{Poisson}
+%					}
+%					
+%					\only<3->{
+%					\addplot [mark=none, color=black, very thick] 
+%					table [x index=0, y index=2, header=false] {Images/photon_distributions.txt};
+%					\addlegendentry{mmBE}
+%					}
+%				\end{axis}
+%			\end{tikzpicture}
+%			}
+%		\end{minipage}
+%		\hfill
+%		\begin{minipage}{.65\textwidth}
+%			\visible<2->{
+%			Poisson distribution (coherent light): %\footnote{\fullcite{kimPhotoncountingStatisticsbasedSupport2022,schneelochIntroductionAbsoluteBrightness2019}}
+%			\[
+%			\begin{aligned}
+%				\mathcal{P}(n) &= \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle} \\ \vspace{5em}
+%				\operatorname{Var}(n) &= \langle n\rangle
+%			\end{aligned}
+%			\]
+%			}
+%			\visible<3->{
+%			multi-mode Bose-Einstein distribution:
+%			\[
+%			\begin{aligned}
+%				\mathcal{P}_m(n) &= \frac{(n+m-1)!}{(m-1)!\,n!}\,
+%				\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} \\ \vspace{5em}
+%				\operatorname{Var}(n) &= \langle n\rangle \left(1+\frac{\langle n\rangle}{m}\right)
+%			\end{aligned}
+%			\]
+%			}
+%		\end{minipage}
+%	\end{frame}
 	
+		\begin{frame}{Photon statistics}
+
+			\visible<2->{
+				Poisson distribution (coherent light): \footnote<3->{\authortitlefootcite{kimPhotoncountingStatisticsbasedSupport2022}}\footnote<3->{\authortitlefootcite{foucheDetectionFalsealarmProbabilities2003}} 
+				\[
+				\begin{aligned}
+					\mathcal{P}(n) &= \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle} \\ \vspace{5em}
+					\operatorname{Var}(n) &= \langle n\rangle
+				\end{aligned}
+				\]
+			}
+			\visible<4->{
+				multi-mode Bose-Einstein distribution (thermal light): \footnotemark[2]
+				\[
+				\begin{aligned}
+					\mathcal{P}_m(n) &= \frac{(n+m-1)!}{(m-1)!\,n!}\,
+					\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} \\ \vspace{5em}
+					\operatorname{Var}(n) &= \langle n\rangle \left(1+\frac{\langle n\rangle}{m}\right)
+				\end{aligned}
+				\]
+			}
+
+	\end{frame}
 	
 	\section{Experiment}
 	\begin{frame}{Experimental setup}
 			\begin{center}
-				\includegraphics[width=.7\textwidth]{Images/DupishSetup.pdf}
+				\includegraphics[width=.7\textwidth]{Images/DupishSetupNew.pdf}
 			\end{center}
 			
 	\end{frame}
+	
+	
 	\section{Results}
 	
 	\begin{frame}{Dark counts}
+		\begin{minipage}{.45\textwidth}
+			\centering
+			Signal arm
+			\vspace{2em}
+			\includegraphics[width=\textwidth]{Images/DC_Sig_2.pdf}
+		\end{minipage}
+		\hfill
 		\begin{minipage}{.45\textwidth}
 			\centering
 			Idler arm
@@ -453,28 +418,25 @@
 				\operatorname{Var}\!\left(N_{\text{noise}}\right) = 1.8 \cdot \langle N_{\text{noise}} \rangle
 			\end{equation*}
 		\end{minipage}
-		\hfill
-		\begin{minipage}{.45\textwidth}
-			\centering
-			Signal arm
-			\vspace{2em}
-			\includegraphics[width=\textwidth]{Images/DC_Sig_2.pdf}
-		\end{minipage}
 	\end{frame}
 	
 	\begin{frame}{Single counts}
 		\begin{minipage}{.45\textwidth}
 			\centering
-			Idler arm
+			Signal arm
 			\vspace{2em}
-			\includegraphics[width=\textwidth]{Images/SingleStatisticsIdler_4.pdf}
+			\includegraphics[width=\textwidth]{Images/SingleStatisticsSignal_4.pdf}
 		\end{minipage}
 		\hfill
 		\begin{minipage}{.45\textwidth}
 			\centering
-			Signal arm
+			Idler arm
 			\vspace{2em}
-			\includegraphics[width=\textwidth]{Images/SingleStatisticsSignal_4.pdf}
+			\includegraphics[width=\textwidth]{Images/SingleStatisticsIdler_4.pdf}
+			\vspace*{-2em}
+			\begin{equation*}
+				\operatorname{Var}\!\left(N_{\text{noise}}\right) = 2.2 \cdot \langle N_{\text{noise}} \rangle
+			\end{equation*}
 		\end{minipage}
 	\end{frame}
 	
@@ -484,7 +446,7 @@
 			Coincidences
 			\vspace{2em}
 			\includegraphics[width=\textwidth]{Images/CoincStatistics_2.pdf}
-			\vspace*{-2em}
+			\vspace*{-2.5em}
 			\begin{equation*}
 				\operatorname{Var}\!\left(N_{\text{cc}}\right) = \langle N_{\text{cc}} \rangle
 			\end{equation*}
@@ -495,7 +457,7 @@
 			Accidentals
 			\vspace{2em}
 			\includegraphics[width=\textwidth]{Images/AccCountsStatistics_2.pdf}
-			\vspace*{-2em}
+			\vspace*{-2.5em}
 			\begin{equation*}
 				\operatorname{Var}\!\left(N_{\text{ac}}\right) = \langle N_{\text{ac}} \rangle
 			\end{equation*}
@@ -578,6 +540,32 @@
 		\end{Block}
 		}
 	\end{frame}
+	
+	\begin{frame}{Simulation}
+		\begin{minipage}{.55\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/SimulationSweepSNR_2.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.35\textwidth}
+			\resizebox{\linewidth}{!}{%
+				\begin{tabular}{@{}l@{\hspace{50pt}}lll@{}}
+					\toprule[1.5pt]
+					\textbf{Parameter} &  \textbf{Value}\\
+					\midrule
+					$\eta_{\text{idl}}$ (\%) & 0.09 \\
+					$\eta_{\text{sig}}$ (\%) & 2.6 \\
+					$R_{\text{idl}}$ (kHz) & 10 \\
+					\textcolor{red}{$R_{\text{noise,idl}}$ (kHz)} & \textcolor{red}{10 - 1000}\\
+					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
+					$T$ (1) & 0.9\\
+					\bottomrule[1.5pt]
+				\end{tabular}
+			}
+		\end{minipage}
+	\end{frame}
+	
+	
 	\begin{frame}{Simulation}
 		\begin{minipage}{.55\textwidth}
 			\centering
@@ -592,7 +580,7 @@
 					\midrule
 					$\eta_{\text{idl}}$ (\%) & 0.09 \\
 					$\eta_{\text{sig}}$ (\%) & 2.6 \\
-					$R_{\text{idl}}$ (kHz) & 3 - 100 \\
+					\textcolor{red}{$R_{\text{idl}}$ (kHz)} & \textcolor{red}{3 - 100} \\
 					$R_{\text{noise,idl}}$ (kHz) & 1000\\
 					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
 					$T$ (1) & 0.9\\
@@ -603,6 +591,19 @@
 	\end{frame}
 	
 	\section{Summary}
+	
+	\begin{frame}{Summary and Outlook}
+		\begin{block}{Can coincidence measurements provide more precise results?}
+			Achievements:
+			\begin{itemize}
+				\item Model for variance of transmittance
+				\item Experimental verification of photon statistics
+				\item Found regions where coincidence approach offers advantages
+			\end{itemize}
+		\end{block}
+		
+	\end{frame}
+	
 	\begin{frame}{Summary and Outlook}
 		\begin{Block}{Git repository}
 			public accessible:\\

@@ -82,25 +82,32 @@
 		
 	\begin{frame}{Motivation}
 			% Start a TikZ picture environment
-			\begin{tikzpicture}[baseline, node distance=0.5cm and 5cm]
+			\begin{center}
+				
+			
+			\begin{tikzpicture}[baseline, node distance=2cm and 2cm]
+				
 				% Top image
-				\node (a) {\includegraphics[width=.1\textwidth]{Images/NoisyImage.pdf}};
+				\node (p)  {\includegraphics[width=.1\textwidth]{Images/PureImage.pdf}};
+				\node (a) [right=of p] {\includegraphics[width=.1\textwidth]{Images/NoisyImage.pdf}};
 				% Bottom image
-				\node (b) [below=of a] {\includegraphics[width=.1\textwidth]{Images/BetterImage.pdf}};
+				\node (b) [right=of a] {\includegraphics[width=.1\textwidth]{Images/BetterImage.pdf}};
 				% Left image, vertically centered between a and b
-				\node (p) [left=of $(a)!0.5!(b)$] {\includegraphics[width=.1\textwidth]{Images/PureImage.pdf}};
+				
 				
 				% Arrows
-				\draw[-{Latex[length=2mm]}, thick] (p.east) -- node[above,rotate=28] {add noise} (a.west);
-				\draw[-{Latex[length=2mm]}, thick, bend left=20] (a.east) to node[right] {$|\phi\rangle$ \footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}}} (b.east);
+				\draw[-{Latex[length=2mm]}, thick] (p.east) -- node[above] {add noise} (a.west);
+				\draw[-{Latex[length=2mm]}, thick] (a.east) to node[above] {$|\phi\rangle$ \footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}}} (b.west);
 			\end{tikzpicture}
+			\end{center}
 			\vspace*{2em}
-			\textbf{Objective:} Can coincidence measurements provide advantages in terms of precision in noisy regimes?
+			\textbf{Objective:} Can correlated photons provide advantages in terms of precision in noisy regimes?
 	\end{frame}
 	
 	\section{Theory}
 	
 	\begin{frame}{SPDC}
+		\visible<2->{
 		\begin{minipage}{.45\textwidth}
 			\begin{center}
 				\resizebox{.7\textwidth}{!}{%
@@ -108,6 +115,7 @@
 				}%
 			\end{center}
 		\end{minipage}
+		}
 %			\begin{minipage}{.45\textwidth}
 %			\begin{center}
 %				\resizebox{\textwidth}{!}{%
@@ -130,7 +138,7 @@
 %			\end{minipage}
 			\hfill
 			\begin{minipage}{.45\textwidth}
-		
+			\visible<3->{
 			\begin{minipage}{.8\textwidth}
 				\begin{center}
 					\resizebox{\textwidth}{!}{%
@@ -167,7 +175,8 @@
 					\]
 				}
 			\end{minipage}
-			
+			}
+			\visible<4->{
 			\begin{minipage}{.8\textwidth}
 				\vspace*{1.5em}
 				\begin{center}
@@ -197,7 +206,7 @@
 					\]
 				}
 			\end{minipage}
-
+			}
 			\end{minipage}
 	\end{frame}
 
@@ -401,67 +410,100 @@
 	\section{Results}
 	
 	\begin{frame}{Dark counts}
+		\visible<2->{
 		\begin{minipage}{.45\textwidth}
 			\centering
 			Signal arm
-			\vspace{2em}
+			%\vspace{2em}
 			\includegraphics[width=\textwidth]{Images/DC_Sig_2.pdf}
 		\end{minipage}
+		}
 		\hfill
+		\visible<3->{
+		\raisebox{-2em}{
 		\begin{minipage}{.45\textwidth}
 			\centering
 			Idler arm
-			{\vspace*{4em}}
+			%\vspace{-1.6em}
 			\includegraphics[width=\textwidth]{Images/DC_Idl_2.pdf}
-			\vspace*{-4em}
-			\begin{equation*}
+			\visible<4->{
+				%\vspace*{1em}
+			{\footnotesize
+				\[
 				\operatorname{Var}\!\left(N_{\text{noise}}\right) = 1.8 \cdot \langle N_{\text{noise}} \rangle
-			\end{equation*}
+				\]
+			}
+			}
+		
 		\end{minipage}
+		}
+		}
 	\end{frame}
 	
 	\begin{frame}{Single counts}
+		\visible<2->{
 		\begin{minipage}{.45\textwidth}
 			\centering
 			Signal arm
-			\vspace{2em}
+			%\vspace*{-1em}
 			\includegraphics[width=\textwidth]{Images/SingleStatisticsSignal_4.pdf}
 		\end{minipage}
+		}
 		\hfill
+		\visible<3->{
+			\raisebox{-1em}{
 		\begin{minipage}{.45\textwidth}
 			\centering
 			Idler arm
-			\vspace{2em}
+			%\vspace{2em}
 			\includegraphics[width=\textwidth]{Images/SingleStatisticsIdler_4.pdf}
-			\vspace*{-2em}
-			\begin{equation*}
+			%\vspace*{-2em}
+			\visible<4->{
+			{\footnotesize
+				\[
 				\operatorname{Var}\!\left(N_{\text{noise}}\right) = 2.2 \cdot \langle N_{\text{noise}} \rangle
-			\end{equation*}
+				\]
+			}
+			}
 		\end{minipage}
+			}
+		}
 	\end{frame}
 	
 	\begin{frame}{Coincidence counts}
+		\visible<2->{
 		\begin{minipage}{.45\textwidth}
 			\centering
 			Coincidences
 			\vspace{2em}
 			\includegraphics[width=\textwidth]{Images/CoincStatistics_2.pdf}
 			\vspace*{-2.5em}
-			\begin{equation*}
+			\visible<3->{
+			{\footnotesize
+				\[
 				\operatorname{Var}\!\left(N_{\text{cc}}\right) = \langle N_{\text{cc}} \rangle
-			\end{equation*}
+			\]
+			}
+			}
 		\end{minipage}
+		}
 		\hfill
+		\visible<4->{
 		\begin{minipage}{.45\textwidth}
 			\centering
 			Accidentals
 			\vspace{2em}
 			\includegraphics[width=\textwidth]{Images/AccCountsStatistics_2.pdf}
 			\vspace*{-2.5em}
-			\begin{equation*}
+			\visible<5->{
+				{\footnotesize
+					\[
 				\operatorname{Var}\!\left(N_{\text{ac}}\right) = \langle N_{\text{ac}} \rangle
-			\end{equation*}
+			\]
+			}
+			}
 		\end{minipage}
+		}
 	\end{frame}
 	
 	

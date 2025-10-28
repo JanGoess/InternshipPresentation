@@ -73,30 +73,52 @@
 		%		\textcolor{fsuPhysik}{\textbf{Attention: This LaTeX file must be compiled with XeLaTeX or LuaLaTeX!}}
 	\end{frame}
 	
+	\begin{frame}{Motivation}
+			% Start a TikZ picture environment
+			\begin{tikzpicture}[baseline, node distance=0.5cm and 5cm]
+				% Top image
+				\node (a) {\includegraphics[width=.25\textwidth]{Images/NoisyImage.pdf}};
+				% Bottom image
+				\node (b) [below=of a] {\includegraphics[width=.25\textwidth]{Images/BetterImage.pdf}};
+				% Left image, vertically centered between a and b
+				\node (p) [left=of $(a)!0.5!(b)$] {\includegraphics[width=.25\textwidth]{Images/PureImage.pdf}};
+				
+				% Arrows
+				\draw[->, thick] (p.east) -- node[above] {add noise} (a.west);
+				\draw[->, thick, bend left=20] (a.east) to node[right] {$|\phi\rangle$ ?} (b.east);
+			\end{tikzpicture}
+	\end{frame}
+	
 	\section{Theory}
 	
 	\begin{frame}{SPDC}
-
-			\begin{minipage}{.45\textwidth}
+		\begin{minipage}{.45\textwidth}
 			\begin{center}
-				\resizebox{\textwidth}{!}{%
-					\begin{tikzpicture}
-						%\useasboundingbox (0,0) rectangle (10,14);
-						\tikzstyle{every node}=[font=\LARGE]
-						
-						\draw [line width=2.5pt, rayE2,color=blue] (2.5,15.25) -- (6.25,15.25);
-						\draw [line width=2.5pt, rayE2,color=black!40!green] (8.5,15.25) -- (12,16.75);
-						\draw [line width=2.5pt, rayE2,color=red] (8.5,15.25) -- (12,13.75);
-						\draw [ fill=black!10 , line width=1.6pt , rounded corners = 9.0] (6.25,16) rectangle (8.5,14.5);
-						
-						\node at (7.45,15.25) {$\chi^2$};
-						\node at (4.4,15.75) [color=blue] { $\lambda_{\text{p}}$};
-						\node at (10.3,16.8) [color=black!40!green] { $\lambda_{\text{s}}$};
-						\node at (10.3,13.7) [color=red] { $\lambda_{\text{i}}$};
-					\end{tikzpicture}
+				\resizebox{.7\textwidth}{!}{%
+					\includegraphics[scale=1]{Images/SPDC_Cone.pdf}
 				}%
 			\end{center}
-			\end{minipage}
+		\end{minipage}
+%			\begin{minipage}{.45\textwidth}
+%			\begin{center}
+%				\resizebox{\textwidth}{!}{%
+%					\begin{tikzpicture}
+%						%\useasboundingbox (0,0) rectangle (10,14);
+%						\tikzstyle{every node}=[font=\LARGE]
+%						
+%						\draw [line width=2.5pt, rayE2,color=blue] (2.5,15.25) -- (6.25,15.25);
+%						\draw [line width=2.5pt, rayE2,color=black!40!green] (8.5,15.25) -- (12,16.75);
+%						\draw [line width=2.5pt, rayE2,color=red] (8.5,15.25) -- (12,13.75);
+%						\draw [ fill=black!10 , line width=1.6pt , rounded corners = 9.0] (6.25,16) rectangle (8.5,14.5);
+%						
+%						\node at (7.45,15.25) {$\chi^2$};
+%						\node at (4.4,15.75) [color=blue] { $\lambda_{\text{p}}$};
+%						\node at (10.3,16.8) [color=black!40!green] { $\lambda_{\text{s}}$};
+%						\node at (10.3,13.7) [color=red] { $\lambda_{\text{i}}$};
+%					\end{tikzpicture}
+%				}%
+%			\end{center}
+%			\end{minipage}
 			\hfill
 			\begin{minipage}{.45\textwidth}
 		
@@ -136,11 +158,13 @@
 					\]
 				}
 			\end{minipage}
-
+			
 			\begin{minipage}{.8\textwidth}
+				\vspace*{1.5em}
 				\begin{center}
 					\resizebox{\textwidth}{!}{%
 						\begin{tikzpicture}
+							
 							%\useasboundingbox (0,0) rectangle (10,14);
 							\tikzstyle{every node}=[font=\LARGE]
 							\draw [ color={rgb,255:red,0; green,0; blue,255}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,10.25) -- (23,10.25);
@@ -391,7 +415,7 @@
 			\[
 			\begin{aligned}
 				\mathcal{P}(n) &= \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle} \\ \vspace{5em}
-				\operatorname{Var}(n) &= \langle n\rangle
+				\operatorname{Var}(n) &= \langle n\rangle (Poisson)
 			\end{aligned}
 			\]
 			}
@@ -401,7 +425,7 @@
 			\begin{aligned}
 				\mathcal{P}_m(n) &= \frac{(n+m-1)!}{(m-1)!\,n!}\,
 				\frac{m^m\langle n\rangle^{n}}{\left(m+\langle n\rangle\right)^{n+m}} \\ \vspace{5em}
-				\operatorname{Var}(n) &= \langle n\rangle \left(1+\frac{\langle n\rangle}{m}\right)
+				\operatorname{Var}(n) &= \langle n\rangle \left(1+\frac{\langle n\rangle}{m}\right) (mmBE)
 			\end{aligned}
 			\]
 			}

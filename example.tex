@@ -52,6 +52,13 @@
 {\multicitedelim}
 {\usebibmacro{postnote}}
 
+\newcommand{\backupbegin}{
+	\newcounter{framenumberbeforeappendix}
+	\setcounter{framenumberbeforeappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+	\addtocounter{framenumber}{-\value{framenumberbeforeappendix}}
+}
 
 
 
@@ -79,30 +86,79 @@
 	\showheadlinetrue
 	
 	\section{Motivation}
-		
+	
 	\begin{frame}{Motivation}
-			% Start a TikZ picture environment
-			\begin{center}
-				
+	\begin{center}
+		
+		
+		\begin{tikzpicture}[baseline, node distance=1cm and 2cm]
 			
-			\begin{tikzpicture}[baseline, node distance=2cm and 2cm]
+			% Top image
+			\visible<2->{\node (p)  {\includegraphics[width=.35\textwidth]{Images/ConvImage}};
 				
-				% Top image
-				\node (p)  {\includegraphics[width=.1\textwidth]{Images/PureImage.pdf}};
-				\node (a) [right=of p] {\includegraphics[width=.1\textwidth]{Images/NoisyImage.pdf}};
-				% Bottom image
-				\node (b) [right=of a] {\includegraphics[width=.1\textwidth]{Images/BetterImage.pdf}};
-				% Left image, vertically centered between a and b
+			}
+			\visible<3->{
+				\node (a) [below=of p] {\includegraphics[width=.35\textwidth]{Images/CoincImage}};
+				\draw[-{Latex[length=2mm]}, thick] (p.west) to[bend right=20] node[right] {correlations \footnote<4->{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}}} (a.west);
 				
-				
+			}
+			
+			% Bottom image
+			
+			\visible<4->{
+				\node (b) [right=of p] {\includegraphics[width=.35\textwidth]{Images/ConvImageNoise}};
 				% Arrows
-				\draw[-{Latex[length=2mm]}, thick] (p.east) -- node[above] {add noise} (a.west);
-				\draw[-{Latex[length=2mm]}, thick] (a.east) to node[above] {$|\phi\rangle$ \footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}}} (b.west);
-			\end{tikzpicture}
-			\end{center}
-			\vspace*{2em}
-			\textbf{Objective:} Can correlated photons provide advantages in terms of precision in noisy regimes?
+				
+				\draw[-{Latex[length=2mm]}, thick] (p.east) to node[above] {add noise} (b.west);
+			}
+			
+			\visible<5->{
+				\node (c) [right=of a] {\includegraphics[width=.35\textwidth]{Images/CoincImageNoise}};
+				% Arrows
+				
+				\draw[-{Latex[length=2mm]}, thick] (a.east) to node[above] {??} (c.west);
+			}
+		\end{tikzpicture}
+	\end{center}
+	\vspace*{2em}
+	\visible<6->{
+		\textbf{Objective:} Can correlated photons provide advantages in terms of precision in noisy regimes for parameter estimation?
+	}
+		
 	\end{frame}
+		
+%	\begin{frame}{Motivation}
+%			% Start a TikZ picture environment
+%			\begin{center}
+%				
+%			
+%			\begin{tikzpicture}[baseline, node distance=2cm and 2cm]
+%				
+%				% Top image
+%				\visible<2->{\node (p)  {\includegraphics[width=.15\textwidth]{Images/PureImage.pdf}};
+%				
+%				}
+%				\visible<3->{
+%				\node (a) [right=of p] {\includegraphics[width=.15\textwidth]{Images/NoisyImage.pdf}};
+%				\draw[-{Latex[length=2mm]}, thick] (p.east) -- node[above] {add noise} (a.west);
+%				
+%				}
+%				
+%				% Bottom image
+%				
+%				\visible<4->{
+%				\node (b) [right=of a] {\includegraphics[width=.15\textwidth]{Images/BetterImage.pdf}};
+%				% Arrows
+%				
+%				\draw[-{Latex[length=2mm]}, thick] (a.east) to node[above] {correlations \footnote<4->{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}}} (b.west);
+%				}
+%			\end{tikzpicture}
+%			\end{center}
+%			\vspace*{3em}
+%			\visible<5->{
+%			\textbf{Objective:} Can correlated photons provide advantages in terms of precision in noisy regimes for sensing?
+%			}
+%	\end{frame}
 	
 	\section{Theory}
 	
@@ -386,7 +442,7 @@
 				\]
 			}
 			\visible<4->{
-				multi-mode Bose-Einstein distribution (thermal light): \footnotemark[2]
+				Multi-mode Bose-Einstein distribution (thermal light): \footnotemark[2]
 				\[
 				\begin{aligned}
 					\mathcal{P}_m(n) &= \frac{(n+m-1)!}{(m-1)!\,n!}\,
@@ -635,54 +691,96 @@
 	\section{Summary}
 	
 	\begin{frame}{Summary and Outlook}
-		\begin{block}{Can coincidence measurements provide more precise results?}
-			Achievements:
+		\visible<2->{
+		\begin{block}{Achievements:}
 			\begin{itemize}
 				\item Model for variance of transmittance
 				\item Experimental verification of photon statistics
 				\item Found regions where coincidence approach offers advantages
 			\end{itemize}
 		\end{block}
+		}
+		\visible<3->{
+		\begin{block}{Outlook:}
+			\begin{itemize}
+				\item Experimental verification of found parameter regions
+				\item Determine the experimental limiations of the variance resolution
+			\end{itemize}
+		\end{block}
+		}
+
+	\end{frame}
+	
+	%Appendix
+	
+	%\backupbegin
+	
+	\begin{frame}{Accidental counts}
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/AccCountsTheoExpStep4_2}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.45\textwidth}
+			\vspace*{-1em}
+			{\small
+				\[
+				\begin{aligned}
+					R_{\text{ac}}^{\text{sam}} 
+					&= \Big( T\,\eta_{\text{idl}} R_{\mathrm{g}} + R_{\text{dc,idl}} - R_{\mathrm{cc,pure}}^{\mathrm{sam}} \Big) \cdot \\
+					& \hspace*{2.5ex}
+					\Big( \eta_{\text{sig}} R_{\mathrm{g}} + R_{\text{dc,sig}} - R_{\text{cc,pure}}^{\text{sam}} \Big) \cdot
+					\tau_{\text{cw}} \\[1.5em]
+					R_{\text{ac}}^{\text{ref}} 
+					&= \Big( \eta_{\text{idl}} R_{\mathrm{g}} + R_{\text{dc,idl}} - R_{\text{cc,pure}}^{\text{ref}} \Big) \cdot \\ & \hspace*{2.5ex}
+					\Big( \eta_{\text{sig}} R_{\mathrm{g}} + R_{\text{dc,sig}} - R_{\text{cc,pure}}^{\text{ref}} \Big) \cdot
+					\tau_{\text{cw}}
+				\end{aligned}
+				\]
+			}
+		\end{minipage}
+	\end{frame}
+	
+	\begin{frame}{Heralding efficiencies}
+		\begin{minipage}{.55\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/HeraldingEff_2}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.4\textwidth}
+			\vspace*{-2em}
+			{\small
+			\[
+				\begin{aligned}
+				\eta_{\text{sig}} &= \frac{N_{\text{tot,cc}}-N_{\text{ac}}}{N_{\text{tot,idl}}-N_{\text{noise}}} = \frac{\eta_{\text{sig}}\eta_{\text{idl}}N_{\text{g}}}{\eta_{\text{idl}}N_{\text{g}}} \\[1em]
+				\eta_{\text{idl}} &= \frac{N_{\text{tot,cc}}-N_{\text{ac}}}{N_{\text{tot,sig}}-N_{\text{noise}}} = \frac{\eta_{\text{sig}}\eta_{\text{idl}}N_{\text{g}}}{\eta_{\text{sig}}N_{\text{g}}}
+				\end{aligned}
+			\]
+			}
+		\end{minipage}
 		
 	\end{frame}
 	
-	\begin{frame}{Summary and Outlook}
-		\begin{Block}{Git repository}
-			public accessible:\\
-			{\scriptsize\url{https://git.tpi.uni-jena.de/mstnhsr/latexbeamer_corporatedesign}}
-		\end{Block}
-		\begin{Block}{Feedback}
-			marc.steinhauser@uni-jena.de
-		\end{Block}
+	\begin{frame}{Histogram}
+		\centering
+		\includegraphics[width=.7\textwidth]{Images/HistogramExample_2}
 	\end{frame}
 	
-	
-	
-	\begin{frame}{Slide title in Palatino Linotype Font}
-		\begin{block}{block environment (lower-case b)}
-			itemize:
-			\begin{itemize}
-				\item First Level
-				\begin{itemize}
-					\item Second Level
-					\begin{itemize}
-						\item Third Level has no item mark
-					\end{itemize}
-				\end{itemize}
-			\end{itemize}
-		\end{block}
-		\begin{Block}{Block environment (upper-case B)}
-			enumerate:
-			\begin{enumerate}
-				\item First Level
-				\begin{enumerate}
-					\item Second Level
-					\begin{enumerate}
-						\item Third Level
-					\end{enumerate}
-				\end{enumerate}
-			\end{enumerate}
-		\end{Block}
+	\begin{frame}{Afterpulsing}
+		\begin{minipage}{.6\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/VarMean_DeadTime_Afterpulsing_2}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.35\textwidth}
+			{
+				\[
+					R_{aft} \propto e^{-t_d}
+				\]
+			}
+		\end{minipage}
 	\end{frame}
+
+	%\backupend
 \end{document}
  

@@ -99,7 +99,9 @@
 			}
 			\visible<3->{
 				\node (a) [below=of p] {\includegraphics[width=.35\textwidth]{Images/CoincImage}};
-				\draw[-{Latex[length=2mm]}, thick] (p.west) to[bend right=20] node[right] {correlations \footnote<4->{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}}} (a.west);
+				\draw[-{Latex[length=2mm]}, thick] (p.west) to[bend right=20] node[right] {correlations \only<3->{%
+						\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
+					}}} (a.west);
 				
 			}
 			
@@ -242,12 +244,12 @@
 							%\useasboundingbox (0,0) rectangle (10,14);
 							\tikzstyle{every node}=[font=\LARGE]
 							\draw [ color={rgb,255:red,0; green,0; blue,255}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,10.25) -- (23,10.25);
-							\draw [ color={rgb,255:red,0; green,0; blue,0}, line width=2.5pt, 	-{Latex[length=4mm]}] (23,10.25) -- (24,10.25);
+							%\draw [ color={rgb,255:red,0; green,0; blue,0}, line width=2.5pt, 	-{Latex[length=4mm]}] (23,10.25) -- (24,10.25);
 							\draw [ color={rgb,255:red,255; green,0; blue,0}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,11.5) -- (18,11.5);
-							\draw [ color=black!40!green, line width=2.5pt, 	-{Latex[length=4mm]}] (18,11.5) -- (24,11.5);
+							\draw [ color=black!40!green, line width=2.5pt, 	-{Latex[length=4mm]}] (18,11.5) -- (23,11.5);
 							
 							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$k_{\text{p}}$};
-							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
+							%\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
 							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$k_{\text{i}}$};
 							\node [font=\LARGE, color=black!40!green] at (21,12) 	{$k_{\text{s}}$};
 							\node [font=\LARGE] at (19.25,13.75) {Momentum\,\,conservation};
@@ -258,7 +260,7 @@
 				%\vspace[2em]
 				{\footnotesize
 					\[
-					\myvect{k}_{\text{p}} = \myvect{k}_{\text{s}} + \myvect{k}_{\text{i}} - \Delta \myvect{k}
+					\myvect{k}_{\text{p}} = \myvect{k}_{\text{s}} + \myvect{k}_{\text{i}} %- \Delta \myvect{k}
 					\]
 				}
 			\end{minipage}
@@ -268,11 +270,11 @@
 
 
 	\begin{frame}{Parameter estimation}
-		\visible<1->{\textbf{Setup:} Transmission setup}\\
-		\visible<2->{\textbf{Parameter:} Transmittance $T$}\\
-		\visible<3->{\textbf{Estimator:} $\operatorname{Var}(T)$} \vspace*{2em}
+		\visible<2->{\textbf{Setup:} Transmission setup}\\
+		\visible<3->{\textbf{Parameter:} Transmittance $T$}\\
+		\visible<4->{\textbf{Estimator:} $\operatorname{Var}(T)$} \vspace*{2em}
 		
-		\visible<4->{
+		\visible<5->{
 		\begin{minipage}{.4\textwidth}
 			\centering
 			Conventional approach:\vspace*{1em}
@@ -280,7 +282,7 @@
 		\end{minipage}
 		}
 		\hfill
-		\visible<5->{
+		\visible<6->{
 		\begin{minipage}{.4\textwidth}
 			\centering
 			Coincidence approach:\vspace*{1.3em}
@@ -433,7 +435,7 @@
 		\begin{frame}{Photon statistics}
 
 			\visible<2->{
-				Poisson distribution (coherent light): \footnote<3->{\authortitlefootcite{kimPhotoncountingStatisticsbasedSupport2022}}\footnote<3->{\authortitlefootcite{foucheDetectionFalsealarmProbabilities2003}} 
+				Poisson distribution (coherent light): \only<3->{\footnote{\authortitlefootcite{kimPhotoncountingStatisticsbasedSupport2022}}\footnote{\authortitlefootcite{foucheDetectionFalsealarmProbabilities2003}} } 
 				\[
 				\begin{aligned}
 					\mathcal{P}(n) &= \frac{\langle n\rangle^{n}}{n!}\,e^{-\langle n\rangle} \\ \vspace{5em}

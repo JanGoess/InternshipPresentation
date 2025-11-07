@@ -97,33 +97,35 @@
 			\visible<2->{\node (p)  {\includegraphics[width=.35\textwidth]{Images/ConvImage}};
 				
 			}
-			\visible<3->{
-				\node (a) [below=of p] {\includegraphics[width=.35\textwidth]{Images/CoincImage}};
-				\draw[-{Latex[length=2mm]}, thick] (p.west) to[bend right=20] node[right] {correlations \only<3->{%
-						\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
-					}}} (a.west);
-				
-			}
+%			\visible<3->{
+%				\node (a) [below=of p] {\includegraphics[width=.35\textwidth]{Images/CoincImage}};
+%				\draw[-{Latex[length=2mm]}, thick] (p.west) to[bend right=20] node[right] {correlations \only<3->{%
+%						\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
+%					}}} (a.west);
+%				
+%			}
 			
 			% Bottom image
 			
-			\visible<4->{
+			\visible<3->{
 				\node (b) [right=of p] {\includegraphics[width=.35\textwidth]{Images/ConvImageNoise}};
 				% Arrows
 				
 				\draw[-{Latex[length=2mm]}, thick] (p.east) to node[above] {add noise} (b.west);
 			}
-			
-			\visible<5->{
-				\node (c) [right=of a] {\includegraphics[width=.35\textwidth]{Images/CoincImageNoise}};
+			\coordinate (mid) at ($ (p)!0.5!(b) $);
+			\visible<4->{
+				\node (c) [below=of mid] {\includegraphics[width=.35\textwidth]{Images/CoincImageNoise}};
 				% Arrows
 				
-				\draw[-{Latex[length=2mm]}, thick] (a.east) to node[above] {??} (c.west);
+				\draw[-{Latex[length=2mm]}, thick] (b.south) to[bend left=20] node[right] {correlations \only<3->{
+										\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
+											}}} (c.east);
 			}
 		\end{tikzpicture}
 	\end{center}
 	\vspace*{2em}
-	\visible<6->{
+	\visible<5->{
 		\textbf{Objective:} Can correlated photons provide advantages in terms of precision in noisy regimes for parameter estimation?
 	}
 		
@@ -291,7 +293,7 @@
 		}
 	\end{frame}
 	
-	\begin{frame}{Conventional approach}
+	\begin{frame}[b]{Conventional approach}
 		\begin{minipage}{0.6\textwidth}
 			\centering
 			\only<1>{\includegraphics[width=.7\textwidth]{Images/ConventionalSetup_NoSam.pdf}}
@@ -308,10 +310,27 @@
 			\end{aligned}
 			\]
 		\end{minipage}
+		\visible<4->{
+		\begin{center}
+			\vspace*{1.5em}
+			\resizebox{\textwidth}{!}{$
+				\operatorname{Var}(T) 
+				= \left( \eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
+				\Bigg[
+				\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right)
+				+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right) 
+				+ T^{2} \Big[ 
+				\operatorname{Var}\!\left(N_{\text{tot}}^{\text{ref}}\right) 
+				+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{ref}}\right)
+				\Big]
+				\Bigg]
+				$}
+		\end{center}
+		}
 	\end{frame}
 		
 	
-	\begin{frame}{Coincidence approach}
+	\begin{frame}[b]{Coincidence approach}
 		\begin{minipage}{.6\textwidth}
 			\centering
 			\only<1>{\includegraphics[width=.9\textwidth]{Images/CoincSetup_NoSam.pdf}}
@@ -329,6 +348,23 @@
 			\end{aligned}
 			\]
 		\end{minipage}
+		\visible<4->{
+			\begin{center}
+				\vspace*{1.5em}
+				\resizebox{\textwidth}{!}{$
+					\operatorname{Var}(T) 
+					= \left( \eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
+					\Bigg[
+					\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right)
+					+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) 
+					+ T^{2} \Big[ 
+					\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{ref}}\right)
+					+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{ref}}\right) 
+					\Big]
+					\Bigg]
+					$}
+			\end{center}
+		}
 	\end{frame}
 	
 %	\begin{aligned}
@@ -498,24 +534,24 @@
 		}
 	\end{frame}
 	
-	\begin{frame}{Single counts}
+	\begin{frame}[b]{Single counts}
 		\visible<2->{
 		\begin{minipage}{.45\textwidth}
 			\centering
-			Signal arm
-			%\vspace*{-1em}
+			Signal arm \\[.3em]
+			
 			\includegraphics[width=\textwidth]{Images/SingleStatisticsSignal_4.pdf}
 		\end{minipage}
 		}
 		\hfill
 		\visible<3->{
-			\raisebox{-1em}{
+			\raisebox{-1.5em}{
 		\begin{minipage}{.45\textwidth}
 			\centering
-			Idler arm
-			%\vspace{2em}
+			Idler arm \\[.5em]
+			%\vspace*{-1em}
 			\includegraphics[width=\textwidth]{Images/SingleStatisticsIdler_4.pdf}
-			%\vspace*{-2em}
+			\\[-1em]
 			\visible<4->{
 			{\footnotesize
 				\[
@@ -528,14 +564,13 @@
 		}
 	\end{frame}
 	
-	\begin{frame}{Coincidence counts}
+	\begin{frame}[b]{Coincidence counts}
 		\visible<2->{
 		\begin{minipage}{.45\textwidth}
 			\centering
-			Coincidences
-			\vspace{2em}
+			Coincidences \\[0.5em]
 			\includegraphics[width=\textwidth]{Images/CoincStatistics_2.pdf}
-			\vspace*{-2.5em}
+			%\vspace*{-2.5em}
 			\visible<3->{
 			{\footnotesize
 				\[
@@ -549,10 +584,9 @@
 		\visible<4->{
 		\begin{minipage}{.45\textwidth}
 			\centering
-			Accidentals
-			\vspace{2em}
+			Accidentals \\[0.5em]
 			\includegraphics[width=\textwidth]{Images/AccCountsStatistics_2.pdf}
-			\vspace*{-2.5em}
+			%\vspace*{-2.5em}
 			\visible<5->{
 				{\footnotesize
 					\[
@@ -641,10 +675,10 @@
 		}
 	\end{frame}
 	
-	\begin{frame}{Simulation}
+	\begin{frame}{Noise-to-signal ratio}
 		\begin{minipage}{.55\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{Images/SimulationSweepSNR_2.pdf}
+			\includegraphics[width=\textwidth]{Images/SimulationSweepSNR_DiffEff.pdf}
 		\end{minipage}
 		\hfill
 		\begin{minipage}{.35\textwidth}
@@ -654,7 +688,7 @@
 					\textbf{Parameter} &  \textbf{Value}\\
 					\midrule
 					$\eta_{\text{idl}}$ (\%) & 0.09 \\
-					$\eta_{\text{sig}}$ (\%) & 2.6 \\
+					$\eta_{\text{sig}}$ (\%) & 1, 4, 20 \\
 					$R_{\text{idl}}$ (kHz) & 10 \\
 					\textcolor{red}{$R_{\text{noise,idl}}$ (kHz)} & \textcolor{red}{10 - 1000}\\
 					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
@@ -666,10 +700,10 @@
 	\end{frame}
 	
 	
-	\begin{frame}{Simulation}
+	\begin{frame}{Transmittance}
 		\begin{minipage}{.55\textwidth}
 			\centering
-			\includegraphics[width=\textwidth]{Images/SimulationSweepRateIdl_2}
+			\includegraphics[width=\textwidth]{Images/SimulationSweepTrans}
 		\end{minipage}
 		\hfill
 		\begin{minipage}{.35\textwidth}
@@ -680,10 +714,10 @@
 					\midrule
 					$\eta_{\text{idl}}$ (\%) & 0.09 \\
 					$\eta_{\text{sig}}$ (\%) & 2.6 \\
-					\textcolor{red}{$R_{\text{idl}}$ (kHz)} & \textcolor{red}{3 - 100} \\
-					$R_{\text{noise,idl}}$ (kHz) & 1000\\
+					$R_{\text{idl}}$ (kHz) & 10 \\
+					$R_{\text{noise,idl}}$ (kHz) & 100\\
 					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
-					$T$ (1) & 0.9\\
+					\textcolor{red}{$T$ (1)} & \textcolor{red}{0 - 1}\\
 					\bottomrule[1.5pt]
 				\end{tabular}
 			}

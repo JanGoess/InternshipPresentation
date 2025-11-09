@@ -21,6 +21,7 @@
 \usepackage{amsmath}
 \usepackage{accents}
 \usepackage{booktabs}
+%\usepackage{appendixnumberbeamer}
 \usetikzlibrary{arrows.meta, positioning, calc}
 \pgfplotsset{compat=1.18}
 \newcommand{\myvect}[1]{\accentset{\rightharpoonup}{#1}}
@@ -118,8 +119,7 @@
 				\node (c) [below=of mid] {\includegraphics[width=.35\textwidth]{Images/CoincImageNoise}};
 				% Arrows
 				
-				\draw[-{Latex[length=2mm]}, thick] (b.south) to[bend left=20] node[right] {correlations \only<3->{
-										\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
+				\draw[-{Latex[length=2mm]}, thick] (b.south) to[bend left=20] node[right] {correlations \only<4->{	\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
 											}}} (c.east);
 			}
 		\end{tikzpicture}
@@ -250,10 +250,10 @@
 							\draw [ color={rgb,255:red,255; green,0; blue,0}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,11.5) -- (18,11.5);
 							\draw [ color=black!40!green, line width=2.5pt, 	-{Latex[length=4mm]}] (18,11.5) -- (23,11.5);
 							
-							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$k_{\text{p}}$};
+							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$\myvect{k}_{\text{p}}$};
 							%\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
-							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$k_{\text{i}}$};
-							\node [font=\LARGE, color=black!40!green] at (21,12) 	{$k_{\text{s}}$};
+							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$\myvect{k}_{\text{i}}$};
+							\node [font=\LARGE, color=black!40!green] at (21,12) 	{$\myvect{k}_{\text{s}}$};
 							\node [font=\LARGE] at (19.25,13.75) {Momentum\,\,conservation};
 						\end{tikzpicture}
 						 
@@ -303,10 +303,10 @@
 		\begin{minipage}{0.35\textwidth}
 			\[
 			\begin{aligned}
-				\uncover<1->{N_{\text{tot}}^{\text{ref}} &= \eta_{\text{idl}} N_{\mathrm{g}} + N_{\text{noise}}^{\text{ref}}} \\[0.5em]
-				\uncover<2->{N_{\text{tot}}^{\text{sam}} &= T\,\eta_{\text{idl}} N_{\mathrm{g}} + N_{\text{noise}}^{\text{sam}} } \\[1em]
-				\uncover<3->{\Rightarrow T &= \frac{\,N_{\text{tot}}^{\text{sam}} - N_{\text{noise}}^{\text{sam}}\,}
-				{\,N_{\text{tot}}^{\text{ref}} - N_{\text{noise}}^{\text{ref}}\,} }
+				\uncover<1->{N_{\text{sing}}^{\text{ref}} &= \eta_{\text{idl}} N_{\mathrm{g}} + N_{\text{noise}}^{\text{ref}}} \\[0.5em]
+				\uncover<2->{N_{\text{sing}}^{\text{sam}} &= T\,\eta_{\text{idl}} N_{\mathrm{g}} + N_{\text{noise}}^{\text{sam}} } \\[1em]
+				\uncover<3->{\Rightarrow T &= \frac{\,N_{\text{sing}}^{\text{sam}} - N_{\text{noise}}^{\text{sam}}\,}
+				{\,N_{\text{sing}}^{\text{ref}} - N_{\text{noise}}^{\text{ref}}\,} }
 			\end{aligned}
 			\]
 		\end{minipage}
@@ -317,10 +317,10 @@
 				\operatorname{Var}(T) 
 				= \left( \eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 				\Bigg[
-				\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right)
+				\operatorname{Var}\!\left(N_{\text{sing}}^{\text{sam}}\right)
 				+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right) 
 				+ T^{2} \Big[ 
-				\operatorname{Var}\!\left(N_{\text{tot}}^{\text{ref}}\right) 
+				\operatorname{Var}\!\left(N_{\text{sing}}^{\text{ref}}\right) 
 				+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{ref}}\right)
 				\Big]
 				\Bigg]
@@ -340,10 +340,10 @@
 		\begin{minipage}{.35\textwidth}
 			\[
 			\begin{aligned}
-				\uncover<1->{N_{\text{cc,tot}}^{\text{ref}} &= \eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}} + N_{\text{ac}}^{\text{ref}} } \\[1em]
-				\uncover<2->{N_{\text{cc,tot}}^{\text{sam}} &= T \,\eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}} + N_{\text{ac}}^{\text{sam}} } \\[1em]
+				\uncover<1->{N_{\text{coin}}^{\text{ref}} &= \eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}} + N_{\text{ac}}^{\text{ref}} } \\[1em]
+				\uncover<2->{N_{\text{coin}}^{\text{sam}} &= T \,\eta_{\text{idl}} \,\eta_{\text{sig}} \, N_{\mathrm{g}} + N_{\text{ac}}^{\text{sam}} } \\[1em]
 				\uncover<3->{
-				\Rightarrow T &= \frac{\,N_{\text{tot,cc}}^{\text{sam}} - N_{\text{ac}}^{\text{sam}}\,}{\,N_{\text{tot,cc}}^{\text{ref}} - N_{\text{ac}}^{\text{ref}}\,}
+				\Rightarrow T &= \frac{\,N_{\text{coin}}^{\text{sam}} - N_{\text{ac}}^{\text{sam}}\,}{\,N_{\text{coin}}^{\text{ref}} - N_{\text{ac}}^{\text{ref}}\,}
 				} 
 			\end{aligned}
 			\]
@@ -355,10 +355,10 @@
 					\operatorname{Var}(T) 
 					= \left( \eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 					\Bigg[
-					\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right)
+					\operatorname{Var}\!\left(N_{\text{coin}}^{\text{sam}}\right)
 					+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) 
 					+ T^{2} \Big[ 
-					\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{ref}}\right)
+					\operatorname{Var}\!\left(N_{\text{coin}}^{\text{ref}}\right)
 					+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{ref}}\right) 
 					\Big]
 					\Bigg]
@@ -384,10 +384,10 @@
 				\operatorname{Var}(T) 
 				= \left( \eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 				\Bigg[
-				\textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right)} 
+				\textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{sing}}^{\text{sam}}\right)} 
 				+ \textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right)} 
 				+ T^{2} \Big[ 
-				\textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{tot}}^{\text{ref}}\right)} 
+				\textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{sing}}^{\text{ref}}\right)} 
 				+ \textcolor<2->{red}{\operatorname{Var}\!\left(N_{\text{noise}}^{\text{ref}}\right) }
 				\Big]
 				\Bigg]
@@ -400,10 +400,10 @@
 				\operatorname{Var}(T) 
 				= \left( \eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 				\Bigg[
-				\textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right) }
+				\textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{coin}}^{\text{sam}}\right) }
 				+ \textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) }
 				+ T^{2} \Big[ 
-				\textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{ref}}\right) }
+				\textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{coin}}^{\text{ref}}\right) }
 				+ \textcolor<2>{red}{\operatorname{Var}\!\left(N_{\text{ac}}^{\text{ref}}\right) }
 				\Big]
 				\Bigg]
@@ -503,7 +503,7 @@
 	
 	\section{Results}
 	
-	\begin{frame}{Dark counts}
+	\begin{frame}[b]{Dark counts}
 		\visible<2->{
 		\begin{minipage}{.45\textwidth}
 			\centering
@@ -514,11 +514,11 @@
 		}
 		\hfill
 		\visible<3->{
-		\raisebox{-2em}{
+		\raisebox{-1.8em}{
 		\begin{minipage}{.45\textwidth}
 			\centering
-			Idler arm
-			%\vspace{-1.6em}
+			Idler arm \\[.2em]
+			
 			\includegraphics[width=\textwidth]{Images/DC_Idl_2.pdf}
 			\visible<4->{
 				%\vspace*{1em}
@@ -555,7 +555,7 @@
 			\visible<4->{
 			{\footnotesize
 				\[
-				\operatorname{Var}\!\left(N_{\text{noise}}\right) = 2.2 \cdot \langle N_{\text{noise}} \rangle
+				\operatorname{Var}\!\left(N_{\text{sing}}\right) = 2.2 \cdot \langle N_{\text{sing}} \rangle
 				\]
 			}
 			}
@@ -608,10 +608,10 @@
 					\operatorname{Var}(T) 
 					= \left( \eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 					\Bigg[
-					\operatorname{Var}\!\left(N_{\text{tot}}^{\text{sam}}\right)
+					\operatorname{Var}\!\left(N_{\text{sing}}^{\text{sam}}\right)
 					+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{sam}}\right)
 					+ T^{2}\Big[
-					\operatorname{Var}\!\left(N_{\text{tot}}^{\text{ref}}\right)
+					\operatorname{Var}\!\left(N_{\text{sing}}^{\text{ref}}\right)
 					+ \operatorname{Var}\!\left(N_{\text{noise}}^{\text{ref}}\right)
 					\Big]
 					\Bigg]
@@ -624,10 +624,10 @@
 					\operatorname{Var}(T) 
 					= \left( \eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 					\Bigg[\textcolor{red}{2.2\cdot
-					\langle N_{\text{tot}}^{\text{sam}}\rangle}
+					\langle N_{\text{sing}}^{\text{sam}}\rangle}
 					+ \textcolor{red}{1.8\cdot\langle N_{\text{noise}}^{\text{sam}}\rangle}
 					+ T^{2}\Big[
-					\textcolor{red}{2.2\cdot\langle N_{\text{tot}}^{\text{ref}}\rangle}
+					\textcolor{red}{2.2\cdot\langle N_{\text{sing}}^{\text{ref}}\rangle}
 					+ \textcolor{red}{1.8\cdot\langle N_{\text{noise}}^{\text{ref}}\rangle}
 					\Big]
 					\Bigg]
@@ -645,10 +645,10 @@
 					\operatorname{Var}(T) 
 					= \left( \eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 					\Bigg[
-					\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{sam}}\right)
+					\operatorname{Var}\!\left(N_{\text{coin}}^{\text{sam}}\right)
 					+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{sam}}\right) 
 					+ T^{2} \Big[ 
-				\operatorname{Var}\!\left(N_{\text{tot,cc}}^{\text{ref}}\right) 
+				\operatorname{Var}\!\left(N_{\text{coin}}^{\text{ref}}\right) 
 					+ \operatorname{Var}\!\left(N_{\text{ac}}^{\text{ref}}\right) 
 					\Big]
 					\Bigg]
@@ -662,10 +662,10 @@
 					\operatorname{Var}(T) 
 					= \left( \eta_{\text{sig}}\,\eta_{\text{idl}}\,N_{\mathrm{g}} \right)^{-2}
 					\Bigg[
-					\textcolor{red}{\langle N_{\text{tot,cc}}^{\text{sam}}\rangle }
+					\textcolor{red}{\langle N_{\text{coin}}^{\text{sam}}\rangle }
 					+ \textcolor{red}{\langle N_{\text{ac}}^{\text{sam}}\rangle }
 					+ T^{2} \Big[ 
-					\textcolor{red}{\langle N_{\text{tot,cc}}^{\text{ref}}\rangle }
+					\textcolor{red}{\langle N_{\text{coin}}^{\text{ref}}\rangle }
 					+ \textcolor{red}{\langle N_{\text{ac}}^{\text{ref}}\rangle }
 					\Big]
 					\Bigg]
@@ -700,53 +700,54 @@
 	\end{frame}
 	
 	
-	\begin{frame}{Transmittance}
-		\begin{minipage}{.55\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{Images/SimulationSweepTrans}
-		\end{minipage}
-		\hfill
-		\begin{minipage}{.35\textwidth}
-			\resizebox{\linewidth}{!}{%
-				\begin{tabular}{@{}l@{\hspace{50pt}}lll@{}}
-					\toprule[1.5pt]
-					\textbf{Parameter} &  \textbf{Value}\\
-					\midrule
-					$\eta_{\text{idl}}$ (\%) & 0.09 \\
-					$\eta_{\text{sig}}$ (\%) & 2.6 \\
-					$R_{\text{idl}}$ (kHz) & 10 \\
-					$R_{\text{noise,idl}}$ (kHz) & 100\\
-					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
-					\textcolor{red}{$T$ (1)} & \textcolor{red}{0 - 1}\\
-					\bottomrule[1.5pt]
-				\end{tabular}
-			}
-		\end{minipage}
-	\end{frame}
+%	\begin{frame}{Transmittance}
+%		\begin{minipage}{.55\textwidth}
+%			\centering
+%			\includegraphics[width=\textwidth]{Images/SimulationSweepTrans}
+%		\end{minipage}
+%		\hfill
+%		\begin{minipage}{.35\textwidth}
+%			\resizebox{\linewidth}{!}{%
+%				\begin{tabular}{@{}l@{\hspace{50pt}}lll@{}}
+%					\toprule[1.5pt]
+%					\textbf{Parameter} &  \textbf{Value}\\
+%					\midrule
+%					$\eta_{\text{idl}}$ (\%) & 0.09 \\
+%					$\eta_{\text{sig}}$ (\%) & 2.6 \\
+%					$R_{\text{idl}}$ (kHz) & 10 \\
+%					$R_{\text{noise,idl}}$ (kHz) & 100\\
+%					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
+%					\textcolor{red}{$T$ (1)} & \textcolor{red}{0 - 1}\\
+%					\bottomrule[1.5pt]
+%				\end{tabular}
+%			}
+%		\end{minipage}
+%	\end{frame}
 	
 	\section{Summary}
 	
 	\begin{frame}{Summary and Outlook}
 		\visible<2->{
-		\begin{block}{Achievements:}
+		\begin{block}{Summary:}
 			\begin{itemize}
-				\item Model for variance of transmittance
+				\item Established a model for the variance of transmittance
 				\item Experimental verification of photon statistics
-				\item Found regions where coincidence approach offers advantages
+				\item Found regions where coincidence approach offers higher precision
 			\end{itemize}
 		\end{block}
 		}
 		\visible<3->{
 		\begin{block}{Outlook:}
 			\begin{itemize}
-				\item Experimental verification of found parameter regions
-				\item Determine the experimental limiations of the variance resolution
+				\item Experimental verification of the found parameter regions
+				\item Determine the experimental limiations for the variance measurement
 			\end{itemize}
 		\end{block}
 		}
 
 	\end{frame}
 	
+	\appendix
 	%Appendix
 	
 	%\backupbegin
@@ -788,8 +789,8 @@
 			{\small
 			\[
 				\begin{aligned}
-				\eta_{\text{sig}} &= \frac{N_{\text{tot,cc}}-N_{\text{ac}}}{N_{\text{tot,idl}}-N_{\text{noise}}} = \frac{\eta_{\text{sig}}\eta_{\text{idl}}N_{\text{g}}}{\eta_{\text{idl}}N_{\text{g}}} \\[1em]
-				\eta_{\text{idl}} &= \frac{N_{\text{tot,cc}}-N_{\text{ac}}}{N_{\text{tot,sig}}-N_{\text{noise}}} = \frac{\eta_{\text{sig}}\eta_{\text{idl}}N_{\text{g}}}{\eta_{\text{sig}}N_{\text{g}}}
+				\eta_{\text{sig}} &= \frac{N_{\text{coin}}-N_{\text{ac}}}{N_{\text{sing,idl}}-N_{\text{noise}}} = \frac{\eta_{\text{sig}}\eta_{\text{idl}}N_{\text{g}}}{\eta_{\text{idl}}N_{\text{g}}} \\[1em]
+				\eta_{\text{idl}} &= \frac{N_{\text{coin}}-N_{\text{ac}}}{N_{\text{sing,sig}}-N_{\text{noise}}} = \frac{\eta_{\text{sig}}\eta_{\text{idl}}N_{\text{g}}}{\eta_{\text{sig}}N_{\text{g}}}
 				\end{aligned}
 			\]
 			}
@@ -811,8 +812,102 @@
 		\begin{minipage}{.35\textwidth}
 			{
 				\[
-					R_{aft} \propto e^{-t_d}
+					R_{aft} \propto e^{-\frac{t_d}{\tau_{de}}}
 				\]
+			}
+		\end{minipage}
+	\end{frame}
+	
+	\begin{frame}{Noiseless case}
+		\begin{minipage}{.55\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/Appendix_SweepTrans0Noise.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.35\textwidth}
+			\resizebox{\linewidth}{!}{%
+				\begin{tabular}{@{}l@{\hspace{50pt}}lll@{}}
+					\toprule[1.5pt]
+					\textbf{Parameter} &  \textbf{Value}\\
+					\midrule
+					$\eta_{\text{idl}}$ (\%) & 60 \\
+					$\eta_{\text{sig}}$ (\%) & 20, 60 \\
+					$R_{\text{idl}}$ (kHz) & 1 \\
+					$R_{\text{noise,idl}}$ (kHz) & 0\\
+					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
+					\textcolor{red}{$T$ (1)} & \textcolor{red}{0 - 1}\\
+					\bottomrule[1.5pt]
+				\end{tabular}
+			}
+		\end{minipage}
+	\end{frame}
+	\begin{frame}{In presence of noise}
+		\begin{minipage}{.55\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/Appendix_SweepTransNSR1.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.35\textwidth}
+			\resizebox{\linewidth}{!}{%
+				\begin{tabular}{@{}l@{\hspace{50pt}}lll@{}}
+					\toprule[1.5pt]
+					\textbf{Parameter} &  \textbf{Value}\\
+					\midrule
+					$\eta_{\text{idl}}$ (\%) & 60 \\
+					$\eta_{\text{sig}}$ (\%) & 10, 20 \\
+					$R_{\text{idl}}$ (kHz) & 1 \\
+					$R_{\text{noise,idl}}$ (kHz) & 1\\
+					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
+					\textcolor{red}{$T$ (1)} & \textcolor{red}{0 - 1}\\
+					\bottomrule[1.5pt]
+				\end{tabular}
+			}
+		\end{minipage}
+	\end{frame}
+	
+	\begin{frame}{Coherent Illumination, noiseless}
+		\begin{minipage}{.55\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/Appendix_SweepTrans0Noise_Coh.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.35\textwidth}
+			\resizebox{\linewidth}{!}{%
+				\begin{tabular}{@{}l@{\hspace{50pt}}lll@{}}
+					\toprule[1.5pt]
+					\textbf{Parameter} &  \textbf{Value}\\
+					\midrule
+					$\eta_{\text{idl}}$ (\%) & 60 \\
+					$\eta_{\text{sig}}$ (\%) & 60, 90 \\
+					$R_{\text{idl}}$ (kHz) & 1 \\
+					$R_{\text{noise,idl}}$ (kHz) & 0\\
+					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
+					\textcolor{red}{$T$ (1)} & \textcolor{red}{0 - 1}\\
+					\bottomrule[1.5pt]
+				\end{tabular}
+			}
+		\end{minipage}
+	\end{frame}
+	\begin{frame}{Coherent Illumination, with noise}
+		\begin{minipage}{.55\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{Images/Appendix_SweepTransNSR1_Coh.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.35\textwidth}
+			\resizebox{\linewidth}{!}{%
+				\begin{tabular}{@{}l@{\hspace{50pt}}lll@{}}
+					\toprule[1.5pt]
+					\textbf{Parameter} &  \textbf{Value}\\
+					\midrule
+					$\eta_{\text{idl}}$ (\%) & 60 \\
+					$\eta_{\text{sig}}$ (\%) & 40, 60 \\
+					$R_{\text{idl}}$ (kHz) & 1 \\
+					$R_{\text{noise,idl}}$ (kHz) & 1\\
+					$R_{\text{noise,sig}}$ (Hz)  & 7 \\
+					\textcolor{red}{$T$ (1)} & \textcolor{red}{0 - 1}\\
+					\bottomrule[1.5pt]
+				\end{tabular}
 			}
 		\end{minipage}
 	\end{frame}

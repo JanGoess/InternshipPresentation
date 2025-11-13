@@ -89,45 +89,46 @@
 	\section{Motivation}
 	
 	\begin{frame}{Motivation}
-	\begin{center}
-		
-		
-		\begin{tikzpicture}[baseline, node distance=1cm and 2cm]
+		\begin{center}
 			
-			% Top image
-			\visible<2->{\node (p)  {\includegraphics[width=.35\textwidth]{Images/ConvImage}};
-				
-			}
-%			\visible<3->{
-%				\node (a) [below=of p] {\includegraphics[width=.35\textwidth]{Images/CoincImage}};
-%				\draw[-{Latex[length=2mm]}, thick] (p.west) to[bend right=20] node[right] {correlations \only<3->{%
-%						\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
-%					}}} (a.west);
-%				
-%			}
 			
-			% Bottom image
-			
-			\visible<3->{
-				\node (b) [right=of p] {\includegraphics[width=.35\textwidth]{Images/ConvImageNoise}};
-				% Arrows
+			\begin{tikzpicture}[baseline, node distance=1cm and 2cm]
 				
-				\draw[-{Latex[length=2mm]}, thick] (p.east) to node[above] {add noise} (b.west);
-			}
-			\coordinate (mid) at ($ (p)!0.5!(b) $);
-			\visible<4->{
-				\node (c) [below=of mid] {\includegraphics[width=.35\textwidth]{Images/CoincImageNoise}};
-				% Arrows
+				% Top image
+				%			\visible<2->{\node (p)  {\includegraphics[width=.35\textwidth]{Images/ConvImage}};
+					%				
+					%			}
+				%			\visible<3->{
+					%				\node (a) [below=of p] {\includegraphics[width=.35\textwidth]{Images/CoincImage}};
+					%				\draw[-{Latex[length=2mm]}, thick] (p.west) to[bend right=20] node[right] {correlations \only<3->{%
+							%						\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
+								%					}}} (a.west);
+					%				
+					%			}
 				
-				\draw[-{Latex[length=2mm]}, thick] (b.south) to[bend left=20] node[right] {correlations \only<4->{	\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
-											}}} (c.east);
-			}
-		\end{tikzpicture}
-	\end{center}
-	\vspace*{2em}
-	\visible<5->{
-		\textbf{Objective:} Can correlated photons provide advantages in terms of precision in noisy regimes for parameter estimation?
-	}
+				% Bottom image
+				
+				\visible<2->{
+					\node (b) %[right=of p]
+					{\includegraphics[width=.35\textwidth]{Images/ConvImageNoise}};
+					% Arrows
+					
+					%\draw[-{Latex[length=2mm]}, thick] (p.east) to node[above] {add noise} (b.west);
+				}
+				%\coordinate (mid) at ($ (p)!0.5!(b) $);
+				\visible<3->{
+					\node (c) [below=of b] {\includegraphics[width=.35\textwidth]{Images/CoincImageNoise}};
+					% Arrows
+					
+					\draw[-{Latex[length=2mm]}, thick] (b.east) to[bend left=30] node[right] {correlations \only<3->{	\footnote{\authortitlefootcite{bridaExperimentalRealizationSubshotnoise2010}
+					}}} (c.east);
+				}
+			\end{tikzpicture}
+		\end{center}
+		\vspace*{2em}
+		\visible<4->{
+			\textbf{Objective:} Can correlated photons provide advantages in terms of precision in noisy regimes for parameter estimation?
+		}
 		
 	\end{frame}
 		
@@ -168,214 +169,213 @@
 	
 	\begin{frame}{Spontaneous parametric \\down-conversion}
 		\visible<2->{
-		\begin{minipage}{.45\textwidth}
-			\begin{center}
-				\resizebox{.7\textwidth}{!}{%
-					\includegraphics[scale=1]{Images/SPDC_Cone.pdf}
-				}%
-			\end{center}
-		\end{minipage}
+			\begin{minipage}{.4\textwidth}
+				\begin{center}
+					\resizebox{.7\textwidth}{!}{%
+						\includegraphics[scale=1]{Images/SPDC_Cone.pdf}
+					}%
+				\end{center}
+			\end{minipage}
 		}
-%			\begin{minipage}{.45\textwidth}
-%			\begin{center}
-%				\resizebox{\textwidth}{!}{%
-%					\begin{tikzpicture}
-%						%\useasboundingbox (0,0) rectangle (10,14);
-%						\tikzstyle{every node}=[font=\LARGE]
-%						
-%						\draw [line width=2.5pt, rayE2,color=blue] (2.5,15.25) -- (6.25,15.25);
-%						\draw [line width=2.5pt, rayE2,color=black!40!green] (8.5,15.25) -- (12,16.75);
-%						\draw [line width=2.5pt, rayE2,color=red] (8.5,15.25) -- (12,13.75);
-%						\draw [ fill=black!10 , line width=1.6pt , rounded corners = 9.0] (6.25,16) rectangle (8.5,14.5);
-%						
-%						\node at (7.45,15.25) {$\chi^2$};
-%						\node at (4.4,15.75) [color=blue] { $\lambda_{\text{p}}$};
-%						\node at (10.3,16.8) [color=black!40!green] { $\lambda_{\text{s}}$};
-%						\node at (10.3,13.7) [color=red] { $\lambda_{\text{i}}$};
-%					\end{tikzpicture}
-%				}%
-%			\end{center}
-%			\end{minipage}
-			\hfill
-			\begin{minipage}{.45\textwidth}
+		%			\begin{minipage}{.45\textwidth}
+			%			\begin{center}
+				%				\resizebox{\textwidth}{!}{%
+					%					\begin{tikzpicture}
+						%						%\useasboundingbox (0,0) rectangle (10,14);
+						%						\tikzstyle{every node}=[font=\LARGE]
+						%						
+						%						\draw [line width=2.5pt, rayE2,color=blue] (2.5,15.25) -- (6.25,15.25);
+						%						\draw [line width=2.5pt, rayE2,color=black!40!green] (8.5,15.25) -- (12,16.75);
+						%						\draw [line width=2.5pt, rayE2,color=red] (8.5,15.25) -- (12,13.75);
+						%						\draw [ fill=black!10 , line width=1.6pt , rounded corners = 9.0] (6.25,16) rectangle (8.5,14.5);
+						%						
+						%						\node at (7.45,15.25) {$\chi^2$};
+						%						\node at (4.4,15.75) [color=blue] { $\lambda_{\text{p}}$};
+						%						\node at (10.3,16.8) [color=black!40!green] { $\lambda_{\text{s}}$};
+						%						\node at (10.3,13.7) [color=red] { $\lambda_{\text{i}}$};
+						%					\end{tikzpicture}
+					%				}%
+				%			\end{center}
+			%			\end{minipage}
+		\hfill
+		\begin{minipage}{.5\textwidth}
 			\visible<3->{
 				\centering
 				\resizebox{\textwidth}{!}{%
-				\begin{tikzpicture}
-					\begin{axis}[
-						ymin=0,
-						ymax=650,
-						xmin=-16,
-						xmax=16,
-						xlabel={Time Delay [ns]},
-						ylabel={Coincidence counts [a.u.]},
-						xtick={-15,-10,-5,0,5,10,15},
-						bar width=2,
-						minor y tick num = 3,
-						area style,
-						width=10cm,
-						height=7cm,
-						every axis plot/.append style={fill=gray!40},
-						legend style={at={(0.5,1.05)}, anchor=south, legend columns=-1},
-						legend cell align=left
-						]
-						
-						
-						
-						\only<4->{
-						% --- Shaded middle region: Coincidences ---
-						\addplot [
-						fill=green,
-						fill opacity=0.3,
-						draw=none
-						] coordinates {
-							(-2,650)
-							(2,650)
-							(2,0)
-							(-2,0)
-						};
-						\addlegendentry{Coincidences}
-							% --- Vertical dashed lines ---
-						\draw[dashed, thick] (axis cs:-2,0) -- (axis cs:-2,650);
-						\draw[dashed, thick] (axis cs:2,0) -- (axis cs:2,650);
-						}
-						
-						\only<5->{
-						% --- Shaded left region: Accidentals ---
-						\addplot [
-						fill=red,
-						fill opacity=0.3,
-						draw=none
-						] coordinates {
-							(-16,650)
-							(-2,650)
-							(-2,0)
-							(-16,0)
-						};
-						\addlegendentry{Accidentals}
-						
-						
-						% --- Shaded right region: Accidentals ---
-						\addplot [
-						fill=red,
-						fill opacity=0.3,
-						draw=none
-						] coordinates {
-							(2,650)
-							(16,650)
-							(16,0)
-							(2,0)
-						};
-						}
-						
-						% --- Histogram data ---
-						\addplot+ [ybar interval,mark=no,fill=black,
-						draw=black] plot coordinates {
-							(-15, 48)
-							(-13, 52)
-							(-11, 46)
-							(-9, 50)
-							(-7, 49)
-							(-5, 53)
-							(-3, 47)
-							(-1, 500)
-							(1, 52)
-							(3, 49)
-							(5, 54)
-							(7, 45)
-							(9, 50)
-							(11, 48)
-							(13, 52)
-							(15, 49)
-						};
-						
-						% --- Text annotations ---
-%						\node at (axis cs:-9, 300) [anchor=south] {\textit{Accidentals}};
-%						\node at (axis cs:10, 300) [anchor=south] {\textit{Accidentals}};
-%						\node at (axis cs:1.3, 525) [anchor=south] {Coincidences};
-						
-						
-
-						
-					\end{axis}
-				\end{tikzpicture}
+					\begin{tikzpicture}
+						\begin{axis}[
+							ymin=0,
+							ymax=650,
+							xmin=-16,
+							xmax=16,
+							xlabel={Time Delay [ns]},
+							ylabel={Coincidence counts [a.u.]},
+							xtick={-15,-10,-5,0,5,10,15},
+							bar width=2,
+							minor y tick num = 3,
+							area style,
+							width=10cm,
+							height=7cm,
+							every axis plot/.append style={fill=gray!40},
+							legend style={at={(0.5,1.05)}, anchor=south, legend columns=-1},
+							legend cell align=left
+							]
+							
+							% --- Shaded middle region: Coincidences ---
+							\only<4->{
+								\addplot [
+								fill=green,
+								fill opacity=0.3,
+								draw=none
+								] coordinates {
+									(-2,650)
+									(2,650)
+									(2,0)
+									(-2,0)
+								};
+								\addlegendentry{Coincidences}
+								
+								% --- Vertical dashed lines ---
+								\draw[dashed, thick] (axis cs:-2,0) -- (axis cs:-2,650);
+								\draw[dashed, thick] (axis cs:2,0) -- (axis cs:2,650);
+								
+							}
+							
+							% --- Shaded left region: Accidentals ---
+							
+							\only<5->{
+								\addplot [
+								fill=red,
+								fill opacity=0.3,
+								draw=none
+								] coordinates {
+									(-16,650)
+									(-2,650)
+									(-2,0)
+									(-16,0)
+								};
+								\addlegendentry{Accidentals}
+								
+								
+								% --- Shaded right region: Accidentals ---
+								\addplot [
+								fill=red,
+								fill opacity=0.3,
+								draw=none
+								] coordinates {
+									(2,650)
+									(16,650)
+									(16,0)
+									(2,0)
+								};
+							}
+							
+							
+							% --- Text annotations ---
+							%						\node at (axis cs:-9, 300) [anchor=south] {\textit{Accidentals}};
+							%						\node at (axis cs:10, 300) [anchor=south] {\textit{Accidentals}};
+							%						\node at (axis cs:1.3, 525) [anchor=south] {Coincidences};
+							
+							% --- Histogram data ---
+							\addplot+ [fill=black,draw=black,ybar interval,mark=no] plot coordinates {
+								(-15, 48)
+								(-13, 52)
+								(-11, 46)
+								(-9, 50)
+								(-7, 49)
+								(-5, 53)
+								(-3, 47)
+								(-1, 500)
+								(1, 52)
+								(3, 49)
+								(5, 54)
+								(7, 45)
+								(9, 50)
+								(11, 48)
+								(13, 52)
+								(15, 49)
+							};
+							
+							
+						\end{axis}
+					\end{tikzpicture}
+				}
+				
+				
+				
+				
+				
+				%			\begin{minipage}{.8\textwidth}
+					%				\begin{center}
+						%					\resizebox{\textwidth}{!}{%
+							%						\begin{tikzpicture}
+								%							%\useasboundingbox (0,0) rectangle (10,14);
+								%							\tikzstyle{every node}=[font=\LARGE]
+								%							
+								%							\pgfmathsetmacro{\yTop}{12.5}
+								%							\pgfmathsetmacro{\yBottom}{9.25}
+								%							\pgfmathsetmacro{\yMid}{\yBottom + 0.6*(\yTop - \yBottom)}
+								%							\pgfmathsetmacro{\pLab}{\yBottom + 0.5*(\yTop - \yBottom)}
+								%							\pgfmathsetmacro{\sLab}{\yBottom + 0.3*(\yTop - \yBottom)}
+								%							\pgfmathsetmacro{\iLab}{\yBottom + 0.8*(\yTop - \yBottom)}
+								%							
+								%							
+								%							\draw [line width=2.5pt] (3.5,\yBottom) -- (12.5,\yBottom);
+								%							\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2.5pt,-{Latex[length=4mm]}] (5,\yBottom) -- (5,\yTop);
+								%							\draw [line width=2.3pt, dashed] (3.75,\yTop) -- (12.5,\yTop);
+								%							\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=2.5pt,-{Latex[length=4mm]}] (10,\yTop) -- (10,\yMid);
+								%							\draw [ color=black!40!green, line width=2.5pt,-{Latex[length=4mm]}] (10,\yMid) -- (10,\yBottom);
+								%							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at (4.25,\pLab) {$\omega_{\text{p}}$};
+								%							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at (10.5,\iLab) {$\omega_{\text{i}}$};
+								%							\node [font=\LARGE, color=black!40!green] at (10.5,\sLab) {$\omega_{\text{s}}$};
+								%							
+								%							\node [font=\LARGE] at (8,13.75) {Energy\,\,conservation};
+								%							
+								%						\end{tikzpicture}
+							
+							
+							%					}%
+						%				\end{center}
+					%				%\vspace[2em]
+					%				{\footnotesize
+						%					\[
+						%						\omega_{\text{p}} = \omega_{\text{s}} + \omega_{\text{i}}
+						%					\]
+						%				}
+					%			\end{minipage}
+				%			}
+			%			\visible<4->{
+				%			\begin{minipage}{.8\textwidth}
+					%				\vspace*{1.5em}
+					%				\begin{center}
+						%					\resizebox{\textwidth}{!}{%
+							%						\begin{tikzpicture}
+								%							
+								%							%\useasboundingbox (0,0) rectangle (10,14);
+								%							\tikzstyle{every node}=[font=\LARGE]
+								%							\draw [ color={rgb,255:red,0; green,0; blue,255}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,10.25) -- (23,10.25);
+								%							%\draw [ color={rgb,255:red,0; green,0; blue,0}, line width=2.5pt, 	-{Latex[length=4mm]}] (23,10.25) -- (24,10.25);
+								%							\draw [ color={rgb,255:red,255; green,0; blue,0}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,11.5) -- (18,11.5);
+								%							\draw [ color=black!40!green, line width=2.5pt, 	-{Latex[length=4mm]}] (18,11.5) -- (23,11.5);
+								%							
+								%							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$\myvect{k}_{\text{p}}$};
+								%							%\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
+								%							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$\myvect{k}_{\text{i}}$};
+								%							\node [font=\LARGE, color=black!40!green] at (21,12) 	{$\myvect{k}_{\text{s}}$};
+								%							\node [font=\LARGE] at (19.25,13.75) {Momentum\,\,conservation};
+								%						\end{tikzpicture}
+							%						 
+							%					}%
+						%				\end{center}
+					%				%\vspace[2em]
+					%				{\footnotesize
+						%					\[
+						%					\myvect{k}_{\text{p}} = \myvect{k}_{\text{s}} + \myvect{k}_{\text{i}} %- \Delta \myvect{k}
+						%					\]
+						%				}
+					%			\end{minipage}
 			}
-				
-				
-				
-				
-				
-%			\begin{minipage}{.8\textwidth}
-%				\begin{center}
-%					\resizebox{\textwidth}{!}{%
-%						\begin{tikzpicture}
-%							%\useasboundingbox (0,0) rectangle (10,14);
-%							\tikzstyle{every node}=[font=\LARGE]
-%							
-%							\pgfmathsetmacro{\yTop}{12.5}
-%							\pgfmathsetmacro{\yBottom}{9.25}
-%							\pgfmathsetmacro{\yMid}{\yBottom + 0.6*(\yTop - \yBottom)}
-%							\pgfmathsetmacro{\pLab}{\yBottom + 0.5*(\yTop - \yBottom)}
-%							\pgfmathsetmacro{\sLab}{\yBottom + 0.3*(\yTop - \yBottom)}
-%							\pgfmathsetmacro{\iLab}{\yBottom + 0.8*(\yTop - \yBottom)}
-%							
-%							
-%							\draw [line width=2.5pt] (3.5,\yBottom) -- (12.5,\yBottom);
-%							\draw [ color={rgb,255:red,0; green,0; blue,255}, line width=2.5pt,-{Latex[length=4mm]}] (5,\yBottom) -- (5,\yTop);
-%							\draw [line width=2.3pt, dashed] (3.75,\yTop) -- (12.5,\yTop);
-%							\draw [ color={rgb,255:red,255; green,0; blue,0}, line width=2.5pt,-{Latex[length=4mm]}] (10,\yTop) -- (10,\yMid);
-%							\draw [ color=black!40!green, line width=2.5pt,-{Latex[length=4mm]}] (10,\yMid) -- (10,\yBottom);
-%							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at (4.25,\pLab) {$\omega_{\text{p}}$};
-%							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at (10.5,\iLab) {$\omega_{\text{i}}$};
-%							\node [font=\LARGE, color=black!40!green] at (10.5,\sLab) {$\omega_{\text{s}}$};
-%							
-%							\node [font=\LARGE] at (8,13.75) {Energy\,\,conservation};
-%							
-%						\end{tikzpicture}
-
-
-%					}%
-%				\end{center}
-%				%\vspace[2em]
-%				{\footnotesize
-%					\[
-%						\omega_{\text{p}} = \omega_{\text{s}} + \omega_{\text{i}}
-%					\]
-%				}
-%			\end{minipage}
-%			}
-%			\visible<4->{
-%			\begin{minipage}{.8\textwidth}
-%				\vspace*{1.5em}
-%				\begin{center}
-%					\resizebox{\textwidth}{!}{%
-%						\begin{tikzpicture}
-%							
-%							%\useasboundingbox (0,0) rectangle (10,14);
-%							\tikzstyle{every node}=[font=\LARGE]
-%							\draw [ color={rgb,255:red,0; green,0; blue,255}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,10.25) -- (23,10.25);
-%							%\draw [ color={rgb,255:red,0; green,0; blue,0}, line width=2.5pt, 	-{Latex[length=4mm]}] (23,10.25) -- (24,10.25);
-%							\draw [ color={rgb,255:red,255; green,0; blue,0}, line 	width=2.5pt, -{Latex[length=4mm]}] (15,11.5) -- (18,11.5);
-%							\draw [ color=black!40!green, line width=2.5pt, 	-{Latex[length=4mm]}] (18,11.5) -- (23,11.5);
-%							
-%							\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,255}] at 	(18.75,9.5) {$\myvect{k}_{\text{p}}$};
-%							%\node [font=\LARGE, color={rgb,255:red,0; green,0; blue,0}] at 	(23.5,9.5) {$\Delta k$};
-%							\node [font=\LARGE, color={rgb,255:red,255; green,0; blue,0}] at 	(16.5,12) {$\myvect{k}_{\text{i}}$};
-%							\node [font=\LARGE, color=black!40!green] at (21,12) 	{$\myvect{k}_{\text{s}}$};
-%							\node [font=\LARGE] at (19.25,13.75) {Momentum\,\,conservation};
-%						\end{tikzpicture}
-%						 
-%					}%
-%				\end{center}
-%				%\vspace[2em]
-%				{\footnotesize
-%					\[
-%					\myvect{k}_{\text{p}} = \myvect{k}_{\text{s}} + \myvect{k}_{\text{i}} %- \Delta \myvect{k}
-%					\]
-%				}
-%			\end{minipage}
-			}
-			\end{minipage}
+		\end{minipage}
 	\end{frame}
 
 
@@ -600,12 +600,78 @@
 
 	\end{frame}
 	
-	\section{Experiment}
 	\begin{frame}{Experimental setup}
+		\begin{minipage}{.5\textwidth}
 			\begin{center}
-				\includegraphics[width=.7\textwidth]{Images/DupishSetupNew.pdf}
+				\includegraphics[width=\textwidth]{Images/DupishSetupNew.pdf}
 			\end{center}
-			
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.45\textwidth}
+			\visible<2->{
+				\begin{minipage}{\textwidth}
+%				\resizebox{\textwidth}{!}{%
+%					\begin{tikzpicture}
+%						\begin{axis}[
+%							ymin=400,
+%							ymax=1200,
+%							xmin=0,
+%							xmax=1000,
+%							xlabel={Time [s]},
+%							ylabel={Photon counts [a.u.]},
+%							%xtick={-15,-10,-5,0,5,10,15},
+%							%bar width=2,
+%							minor y tick num = 3,
+%							area style,
+%							width=10cm,
+%							height=7cm,
+%							every axis plot/.append style={fill=gray!40},
+%							legend style={at={(0.5,1.05)}, anchor=south, legend columns=-1},
+%							legend cell align=left
+%							]
+%							
+%							\addplot[only marks, mark=|, mark size=5pt, blue, opacity=0.6] table {Images/timestamps.txt};
+%						\end{axis}
+%					\end{tikzpicture}
+%				}
+				\centering
+				\includegraphics[width=\textwidth]{Images/ExampleCountsExp.pdf}
+				\end{minipage}
+			}
+			\vfill
+			\visible<3->{
+				\begin{minipage}{\textwidth}
+%				\resizebox{\textwidth}{!}{%
+%					\begin{tikzpicture}
+%						\begin{axis}[
+%							ybar,
+%							bar width=1pt,
+%							width=14cm,
+%							height=8cm,
+%							xlabel={Value},
+%							ylabel={Probability},
+%							title={Histogram from Data File},
+%							grid=both,
+%							grid style={dotted,gray!30},
+%							ymin=0,
+%							ymajorgrids=true,
+%							tick align=outside,
+%							]
+%							
+%							% Import data file: first column = x, second = y
+%							\addplot+[ybar, fill=blue!40!white, draw=black]
+%							table [x index=0, y index=1, col sep=tab] {Images/histogram.txt};
+%							
+%						\end{axis}
+%					\end{tikzpicture}
+%				}
+				\centering
+				\includegraphics[width=\textwidth]{Images/ExampleHistoExp.pdf}
+				\end{minipage}
+			}
+		\end{minipage}
+		
+		
 	\end{frame}
 	
 	
@@ -782,6 +848,30 @@
 		\end{Block}
 		}
 	\end{frame}
+	
+	\begin{frame}{Simulation}
+		\begin{minipage}{.45\textwidth}
+			\begin{minipage}{\textwidth}
+				\centering
+				{\tiny \hspace*{2em} $\eta_{\text{idl}}$ = 70\%, $\eta_{\text{sig}}$ = 70\%, 		$R_{\text{noise,idl}}$ = 0$~\text{Hz}$ }
+				\includegraphics[width=.75\textwidth]{Images/SweepSinglesIdler_Eff_70_70_NoNoise.pdf}
+			\end{minipage}
+			%\vfill
+			\\ [1.5em]
+			\begin{minipage}{\textwidth}
+				\centering
+				{\tiny \hspace*{1.7em} $\eta_{\text{idl}}$ = \textcolor{red}{0.09\%}, $\eta_{\text{sig}}$ = \textcolor{red}{2.6\%}, 		$R_{\text{noise,idl}}$ = 0$~\text{Hz}$ }
+				\includegraphics[width=.75\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_NoNoise.pdf}
+			\end{minipage}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{.45\textwidth}
+			\centering
+			{\scriptsize \hspace*{2.2em} $\eta_{\text{idl}}$ = 0.09\%, $\eta_{\text{sig}}$ = 2.6\%, 		$R_{\text{noise,idl}}$ = \textcolor{red}{20$~\text{kHz}$} }
+			\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_20kNoise.pdf}
+		\end{minipage}
+	\end{frame}
+	
 	
 	\begin{frame}{Simulation}
 		\visible<2->{

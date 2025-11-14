@@ -600,6 +600,7 @@
 
 	\end{frame}
 	
+	\section{Experiment}
 	\begin{frame}{Experimental setup}
 		\begin{minipage}{.5\textwidth}
 			\begin{center}
@@ -608,70 +609,21 @@
 		\end{minipage}
 		\hfill
 		\begin{minipage}{.45\textwidth}
-			\visible<2->{
-				\begin{minipage}{\textwidth}
-%				\resizebox{\textwidth}{!}{%
-%					\begin{tikzpicture}
-%						\begin{axis}[
-%							ymin=400,
-%							ymax=1200,
-%							xmin=0,
-%							xmax=1000,
-%							xlabel={Time [s]},
-%							ylabel={Photon counts [a.u.]},
-%							%xtick={-15,-10,-5,0,5,10,15},
-%							%bar width=2,
-%							minor y tick num = 3,
-%							area style,
-%							width=10cm,
-%							height=7cm,
-%							every axis plot/.append style={fill=gray!40},
-%							legend style={at={(0.5,1.05)}, anchor=south, legend columns=-1},
-%							legend cell align=left
-%							]
-%							
-%							\addplot[only marks, mark=|, mark size=5pt, blue, opacity=0.6] table {Images/timestamps.txt};
-%						\end{axis}
-%					\end{tikzpicture}
-%				}
-				\centering
-				\includegraphics[width=\textwidth]{Images/ExampleCountsExp.pdf}
-				\end{minipage}
-			}
-			\vfill
-			\visible<3->{
-				\begin{minipage}{\textwidth}
-%				\resizebox{\textwidth}{!}{%
-%					\begin{tikzpicture}
-%						\begin{axis}[
-%							ybar,
-%							bar width=1pt,
-%							width=14cm,
-%							height=8cm,
-%							xlabel={Value},
-%							ylabel={Probability},
-%							title={Histogram from Data File},
-%							grid=both,
-%							grid style={dotted,gray!30},
-%							ymin=0,
-%							ymajorgrids=true,
-%							tick align=outside,
-%							]
-%							
-%							% Import data file: first column = x, second = y
-%							\addplot+[ybar, fill=blue!40!white, draw=black]
-%							table [x index=0, y index=1, col sep=tab] {Images/histogram.txt};
-%							
-%						\end{axis}
-%					\end{tikzpicture}
-%				}
-				\centering
-				\includegraphics[width=\textwidth]{Images/ExampleHistoExp.pdf}
-				\end{minipage}
-			}
-		\end{minipage}
-		
-		
+			\begin{tikzpicture}
+				
+				\visible<2->{
+				\node (top) at (0,0) 		{\includegraphics[width=.9\textwidth]{Images/ExampleCountsExp.pdf}};
+					}
+					
+				\visible<3->{
+				\node (bottom) at (0,-3.6) 		{\includegraphics[width=.9\textwidth]{Images/ExampleHistoExp.pdf}};
+				
+				\draw[-{Latex[length=2mm]}, thick]	([xshift=3mm] top.south)
+						-- 
+						([xshift=3mm] bottom.north);
+					}
+			\end{tikzpicture}
+			\end{minipage}
 	\end{frame}
 	
 	
@@ -850,70 +802,74 @@
 	\end{frame}
 	
 	\begin{frame}{Simulation}
-		\begin{minipage}{.45\textwidth}
-			\begin{minipage}{\textwidth}
-				\centering
-				{\tiny \hspace*{2em} $\eta_{\text{idl}}$ = 70\%, $\eta_{\text{sig}}$ = 70\%, 		$R_{\text{noise,idl}}$ = 0$~\text{Hz}$ }
-				\includegraphics[width=.75\textwidth]{Images/SweepSinglesIdler_Eff_70_70_NoNoise.pdf}
+		\begin{minipage}{0.45\textwidth}
+			% --- TOP IMAGE ---
+			
+			\begin{minipage}{0.70\textwidth}
+				\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_70_70_NoNoise.pdf}
 			\end{minipage}
-			%\vfill
-			\\ [1.5em]
-			\begin{minipage}{\textwidth}
-				\centering
-				{\tiny \hspace*{1.7em} $\eta_{\text{idl}}$ = \textcolor{red}{0.09\%}, $\eta_{\text{sig}}$ = \textcolor{red}{2.6\%}, 		$R_{\text{noise,idl}}$ = 0$~\text{Hz}$ }
-				\includegraphics[width=.75\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_NoNoise.pdf}
+			\hfill
+			\begin{minipage}{0.25\textwidth}
+				\raisebox{2em}{%
+				{\tiny
+					\(
+					\begin{aligned}
+						\eta_{\text{idl}} &= \text{70}\% \\
+						\eta_{\text{sig}} &= \text{70}\% \\
+						R_{\text{noise,idl}} &= \text{0}~\text{Hz}
+					\end{aligned}
+					\)
+				}
+			}
+			\end{minipage}%
+			
+			\vspace{1.5em}
+			
+			% --- BOTTOM IMAGE ---
+			
+			\begin{minipage}{0.70\textwidth}
+				\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_NoNoise.pdf}
 			\end{minipage}
+			\hfill
+			\begin{minipage}{0.25\textwidth}
+				\raisebox{2em}{%
+					{\tiny
+						\(
+					\begin{aligned}
+						\eta_{\text{idl}} &= \textcolor{red}{\text{0.09}\%} \\
+						\eta_{\text{sig}} &= \textcolor{red}{\text{2.6}\%} \\
+						R_{\text{noise,idl}} &= \text{0}~\text{Hz}
+					\end{aligned}
+					\)
+					}
+				}
+			\end{minipage}%
+			
 		\end{minipage}
 		\hfill
-		\begin{minipage}{.45\textwidth}
-			\centering
-			{\scriptsize \hspace*{2.2em} $\eta_{\text{idl}}$ = 0.09\%, $\eta_{\text{sig}}$ = 2.6\%, 		$R_{\text{noise,idl}}$ = \textcolor{red}{20$~\text{kHz}$} }
-			\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_20kNoise.pdf}
+		\begin{minipage}{0.5\textwidth}
+			
+			\begin{minipage}{0.70\textwidth}
+				\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_20kNoise.pdf}
+			\end{minipage}
+			\hfill
+			\begin{minipage}{0.25\textwidth}
+				\raisebox{2em}{%
+					{\tiny
+						\(
+					\begin{aligned}
+						\eta_{\text{idl}} &= \text{0.09}\% \\
+						\eta_{\text{sig}} &= \text{2.6}\% \\
+						R_{\text{noise,idl}} &= \textcolor{red}{\text{20 kHz}}
+					\end{aligned}
+					\)
+					}
+				}
+			\end{minipage}
+			
 		\end{minipage}
 	\end{frame}
 	
-	
-	\begin{frame}{Simulation}
-		\visible<2->{
-		\begin{minipage}{0.3\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_90_90_NoNoise.pdf}
-			%\vspace{2mm}
-			\footnotesize
-			\begin{align*}
-				\eta_{\text{idl}} &= 90\% \\
-				\eta_{\text{sig}} &= 90\% \\
-				R_{\text{noise,idl}} &= 0~\text{Hz}
-			\end{align*}
-		\end{minipage}
-		}
-		\hfill
-		\visible<3->{
-		\begin{minipage}{.3\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_NoNoise.pdf}
-			\footnotesize
-			\begin{align*}
-				\eta_{\text{idl}} &= \textcolor{red}{0.09\%} \\
-				\eta_{\text{sig}} &= \textcolor{red}{2.6\%} \\
-				R_{\text{noise,idl}} &= 0~\text{Hz}
-			\end{align*}
-		\end{minipage}
-		}
-		\hfill
-		\visible<4->{
-		\begin{minipage}{.3\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_20kNoise.pdf}
-			\footnotesize
-			\begin{align*}
-				\eta_{\text{idl}} &= 0.09\% \\
-				\eta_{\text{sig}} &= 2.6\% \\
-				R_{\text{noise,idl}} &= \textcolor{red}{20~\text{kHz}}
-			\end{align*}
-		\end{minipage}
-		}
-	\end{frame}
 	
 	
 	

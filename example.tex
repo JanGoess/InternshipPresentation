@@ -804,7 +804,7 @@
 	\begin{frame}{Simulation}
 		\begin{minipage}{0.45\textwidth}
 			% --- TOP IMAGE ---
-			
+			\visible<2->{
 			\begin{minipage}{0.70\textwidth}
 				\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_70_70_NoNoise.pdf}
 			\end{minipage}
@@ -822,11 +822,11 @@
 				}
 			}
 			\end{minipage}%
-			
+			}
 			\vspace{1.5em}
 			
 			% --- BOTTOM IMAGE ---
-			
+			\visible<3->{
 			\begin{minipage}{0.70\textwidth}
 				\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_NoNoise.pdf}
 			\end{minipage}
@@ -844,11 +844,12 @@
 					}
 				}
 			\end{minipage}%
-			
+			}
 		\end{minipage}
 		\hfill
 		\begin{minipage}{0.5\textwidth}
 			
+			\visible<4->{
 			\begin{minipage}{0.70\textwidth}
 				\includegraphics[width=\textwidth]{Images/SweepSinglesIdler_Eff_2-6_009_20kNoise.pdf}
 			\end{minipage}
@@ -866,7 +867,7 @@
 					}
 				}
 			\end{minipage}
-			
+			}
 		\end{minipage}
 	\end{frame}
 	
@@ -1010,10 +1011,11 @@
 		\begin{minipage}{.35\textwidth}
 			{
 				\[
-					R_{aft} \propto e^{-\frac{t_d}{\tau_{de}}}
+					R_{aft} \propto e^{-\frac{t_d}{\tau_{de}}} 
 				\]
 			}
 		\end{minipage}
+		\hspace*{-3em}\footnote{\authortitlefootcite{humerSimpleRobustMethod2015}}
 	\end{frame}
 	
 	\begin{frame}{Noiseless case}

@@ -113,20 +113,21 @@ BoldItalicFont = palabi
 		\hfill\includegraphics[height=0.69mm,width=0.5\textwidth]{data/bar.eps}
 	\end{beamercolorbox}
 	\leavevmode % the following boxes are places next to each other
-	\begin{beamercolorbox}[wd=0.25\textwidth,ht=10.65mm]{footcolor}
-		\vbox to 11.34mm{\vfil \hspace*{0.7cm}\includegraphics[height=0.63cm]{data/UniJena_Wortmarke_blue.eps} \vfil}
+%	\begin{beamercolorbox}[wd=0.25\textwidth,ht=10.65mm]{footcolor}
+%		\vbox to 11.34mm{\vfil \hspace*{0.7cm}\includegraphics[height=0.63cm]{data/UniJena_Wortmarke_blue.eps} \vfil}
+%	\end{beamercolorbox}
+%	\hspace{-1mm} % remove white gap between boxes
+	\begin{beamercolorbox}[wd=0.25\textwidth,ht=10.65mm,center]{footcolor}
+		\vbox to 11.34mm{\vfil \includegraphics[height=0.9cm]{data/Logo IAP.png} \vfil}
 	\end{beamercolorbox}
 	\hspace{-1mm} % remove white gap between boxes
 	\begin{beamercolorbox}[wd=0.5\textwidth,ht=10.65mm,center]{footcolor}
-		\vbox to 11.34mm{\vfil \includegraphics[height=0.9cm]{data/Logo IAP.png} \vfil}
+		\vbox to 11.34mm{\vfil
+			\normalbaselines
+			\insertshorttitle\newline 
+			\insertshortauthor
+		\vfil}
 	\end{beamercolorbox}
-	%\begin{beamercolorbox}[wd=0.5\textwidth,ht=10.65mm,center]{footcolor}
-	%	\vbox to 11.34mm{\vfil
-	%		\normalbaselines
-	%		\insertshorttitle\newline 
-	%		\insertshortauthor
-	%	\vfil}
-	%\end{beamercolorbox}
 	\hspace{-1mm} % remove white gap between boxes
 	\begin{beamercolorbox}[wd=0.25\textwidth,ht=10.65mm,right]{footcolor}
 		\vbox to 11.34mm{\vfil
